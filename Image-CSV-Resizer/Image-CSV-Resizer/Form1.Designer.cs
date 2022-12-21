@@ -1,6 +1,6 @@
 ﻿namespace Image_CSV_Resizer
 {
-    partial class btnCSV
+    partial class Form1
     {
         /// <summary>
         ///  Required designer variable.
@@ -32,15 +32,15 @@
             this.lstPhotos = new System.Windows.Forms.ListBox();
             this.btnPhotos = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtDestinyFolder = new System.Windows.Forms.TextBox();
             this.btnDestinyFolder = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.txtCsvFile = new System.Windows.Forms.TextBox();
+            this.btnCSVRead = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.btnResize = new System.Windows.Forms.Button();
+            this.lstItemsCsv = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -83,12 +83,12 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Selecione a pasta destino";
             // 
-            // textBox1
+            // txtDestinyFolder
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 298);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(482, 23);
-            this.textBox1.TabIndex = 4;
+            this.txtDestinyFolder.Location = new System.Drawing.Point(12, 298);
+            this.txtDestinyFolder.Name = "txtDestinyFolder";
+            this.txtDestinyFolder.Size = new System.Drawing.Size(482, 23);
+            this.txtDestinyFolder.TabIndex = 4;
             // 
             // btnDestinyFolder
             // 
@@ -99,6 +99,7 @@
             this.btnDestinyFolder.TabIndex = 5;
             this.btnDestinyFolder.Text = "...";
             this.btnDestinyFolder.UseVisualStyleBackColor = true;
+            this.btnDestinyFolder.Click += new System.EventHandler(this.btnDestinyFolder_Click);
             // 
             // label3
             // 
@@ -110,31 +111,23 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Selecione o arquivo CSV";
             // 
-            // textBox2
+            // txtCsvFile
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 370);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(482, 23);
-            this.textBox2.TabIndex = 7;
+            this.txtCsvFile.Location = new System.Drawing.Point(12, 370);
+            this.txtCsvFile.Name = "txtCsvFile";
+            this.txtCsvFile.Size = new System.Drawing.Size(482, 23);
+            this.txtCsvFile.TabIndex = 7;
             // 
-            // button1
+            // btnCSVRead
             // 
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(500, 370);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(69, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "...";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(12, 407);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(482, 229);
-            this.listBox2.TabIndex = 9;
+            this.btnCSVRead.ForeColor = System.Drawing.Color.Black;
+            this.btnCSVRead.Location = new System.Drawing.Point(500, 370);
+            this.btnCSVRead.Name = "btnCSVRead";
+            this.btnCSVRead.Size = new System.Drawing.Size(69, 23);
+            this.btnCSVRead.TabIndex = 8;
+            this.btnCSVRead.Text = "...";
+            this.btnCSVRead.UseVisualStyleBackColor = true;
+            this.btnCSVRead.Click += new System.EventHandler(this.btnCSVRead_Click);
             // 
             // label4
             // 
@@ -159,34 +152,42 @@
             // 
             this.btnResize.Font = new System.Drawing.Font("Segoe UI Emoji", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnResize.ForeColor = System.Drawing.Color.Black;
-            this.btnResize.Location = new System.Drawing.Point(325, 683);
+            this.btnResize.Location = new System.Drawing.Point(308, 642);
             this.btnResize.Name = "btnResize";
             this.btnResize.Size = new System.Drawing.Size(593, 98);
             this.btnResize.TabIndex = 12;
             this.btnResize.Text = "Redimensionar";
             this.btnResize.UseVisualStyleBackColor = true;
             // 
-            // btnCSV
+            // lstItemsCsv
+            // 
+            this.lstItemsCsv.Location = new System.Drawing.Point(12, 399);
+            this.lstItemsCsv.Name = "lstItemsCsv";
+            this.lstItemsCsv.Size = new System.Drawing.Size(482, 228);
+            this.lstItemsCsv.TabIndex = 13;
+            this.lstItemsCsv.UseCompatibleStateImageBehavior = false;
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1184, 812);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.lstItemsCsv);
             this.Controls.Add(this.btnResize);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.btnCSVRead);
+            this.Controls.Add(this.txtCsvFile);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnDestinyFolder);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtDestinyFolder);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnPhotos);
             this.Controls.Add(this.lstPhotos);
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
-            this.Name = "btnCSV";
+            this.Name = "Form1";
             this.Text = "Image-CSV-Resizer";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -199,14 +200,14 @@
         private ListBox lstPhotos;
         private Button btnPhotos;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox txtDestinyFolder;
         private Button btnDestinyFolder;
         private Label label3;
-        private TextBox textBox2;
-        private Button button1;
-        private ListBox listBox2;
+        private TextBox txtCsvFile;
+        private Button btnCSVRead;
         private Label label4;
         private ListBox listBox3;
         private Button btnResize;
+        private ListView lstItemsCsv;
     }
 }
