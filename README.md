@@ -1,2 +1,3 @@
 # Image-CSV-Resizer
-Programa que realiza o redimensionamento e renomeia os arquivos com base num documento CSV. Para uma descrição mais detalhada, leia o arquivo README presente no projeto.
+Programa que realiza o redimensionamento e renomeia os arquivos com base num documento CSV. 
+Na escola que eu trabalho, centenas de alunos novos são matriculados todos os anos. Esses alunos precisam ter sua foto tirada, renomeada, redimensionada e enviada para nosso Banco de Dados. A única particularidade é que estas fotos precisam ser redimensionadas para um tamanho menor (400px - 300px), e o nome do arquivo precisa ser renomeado para a matrícula do aluno. Este programa tem por finalidade automatizar esse processo e redimensionar e renomear as fotos, tornando assim o processo menos sucetível a erros. 
