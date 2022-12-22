@@ -11,7 +11,8 @@ namespace Image_CSV_Resizer
     public partial class Form1 : Form
     {
         List<string> caminhoFotos = new List<string>();
-        List<string> numMatricula = new List<string>();
+        List<string> numMatriculaCSV = new List<string>();
+        List<string> numFotoCSV = new List<string>();
 
         public Form1()
         {
@@ -109,9 +110,28 @@ namespace Image_CSV_Resizer
 
                 if (openFile.ShowDialog() == DialogResult.OK) 
                 {
+                    numFotoCSV.Clear(); 
+                    numMatriculaCSV.Clear();
+
                     txtCsvFile.Text = openFile.FileName;
+                   
+                    var loadCsv = new StreamReader(txtCsvFile.Text);
+                    var cultureConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
 
+                    using (var dados = new CsvReader(loadCsv, cultureConfig)) 
+                    {
+                        var dadosCsv = dados.GetRecords<DadosCsv>();
 
+                        foreach (var items in dadosCsv) 
+                        {
+                            numFotoCSV.Add(items.foto);
+                            numMatriculaCSV.Add(items.matricula);
+
+                            string[] linha = { items.nome, items.matricula, items.foto };
+                            var lstViewLine = new ListViewItem(linha);
+                            lstItemsCsv.Items.Add(lstViewLine);
+                        }
+                    }
                 }
 
             }
