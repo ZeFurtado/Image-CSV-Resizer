@@ -141,6 +141,31 @@ namespace Image_CSV_Resizer
             }
 
         }
+
+        private void btnResize_Click(object sender, EventArgs e)
+        {
+            Redimensionar();
+        }
+
+        void Redimensionar() 
+        {
+            if (lstPhotos.Items.Count <= 0)
+            {
+                MessageBox.Show("Não foi selecionada nenhuma foto!!!", "Sem foto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (string.IsNullOrEmpty(txtDestinyFolder.Text))
+            {
+                MessageBox.Show("Não foi selecionada nenhuma pasta destino!!!", "Sem pasta destino", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (string.IsNullOrEmpty(txtCsvFile.Text) || lstItemsCsv.Items.Count == 0)
+            {
+                MessageBox.Show("Não foi selecionado arquivo CSV!!!", "Não encontrado arquivo CSV", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else 
+            {
+                MessageBox.Show("Resizing...");
+            }
+        }
     }
 
     public class DadosCsv 

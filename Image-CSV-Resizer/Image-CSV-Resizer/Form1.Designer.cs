@@ -41,6 +41,7 @@
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.btnResize = new System.Windows.Forms.Button();
             this.lstItemsCsv = new System.Windows.Forms.ListView();
+            this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -158,6 +159,7 @@
             this.btnResize.TabIndex = 12;
             this.btnResize.Text = "Redimensionar";
             this.btnResize.UseVisualStyleBackColor = true;
+            this.btnResize.Click += new System.EventHandler(this.btnResize_Click);
             // 
             // lstItemsCsv
             // 
@@ -167,12 +169,23 @@
             this.lstItemsCsv.TabIndex = 13;
             this.lstItemsCsv.UseCompatibleStateImageBehavior = false;
             // 
+            // btnClear
+            // 
+            this.btnClear.ForeColor = System.Drawing.Color.Black;
+            this.btnClear.Location = new System.Drawing.Point(923, 655);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(180, 66);
+            this.btnClear.TabIndex = 14;
+            this.btnClear.Text = "Limpar";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lstItemsCsv);
             this.Controls.Add(this.btnResize);
             this.Controls.Add(this.listBox3);
@@ -209,5 +222,6 @@
         private ListBox listBox3;
         private Button btnResize;
         private ListView lstItemsCsv;
+        private Button btnClear;
     }
 }
