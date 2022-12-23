@@ -23,10 +23,12 @@ namespace Image_CSV_Resizer
 
             lstItemsCsv.View = View.Details;
             lstItemsCsv.LabelEdit = true;
-            lstItemsCsv.Columns.Add("Nome", lstItemsCsv.Size.Width / 3, HorizontalAlignment.Left);
-            lstItemsCsv.Columns.Add("Matrícula", lstItemsCsv.Size.Width / 3, HorizontalAlignment.Left);
-            lstItemsCsv.Columns.Add("Foto", lstItemsCsv.Size.Width / 3, HorizontalAlignment.Left);
+            lstItemsCsv.Columns.Add("Nome", lstItemsCsv.Size.Width / 2, HorizontalAlignment.Left);
+            lstItemsCsv.Columns.Add("Matrícula", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
+            lstItemsCsv.Columns.Add("Nº da Foto", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
         }
+
+
 
         private void btnPhotos_Click(object sender, EventArgs e)
         {
@@ -40,7 +42,7 @@ namespace Image_CSV_Resizer
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
             openPhotos.Multiselect = true;
             openPhotos.Title = "Selecione a(s) foto(s)";
-            openPhotos.InitialDirectory = @"C:\Users\Lukhas Furtado\Desktop\Repositório\Image-CSV-Resizer\Fotos";
+            openPhotos.InitialDirectory = @"C:\Users\lukhas.furtado\source\repos\Image-CSV-Resizer\Fotos";
 
             lstPhotos.ScrollAlwaysVisible = true;
             lstPhotos.HorizontalScrollbar = true;
@@ -64,6 +66,7 @@ namespace Image_CSV_Resizer
             }
             
         }
+
 
 
         private void btnDestinyFolder_Click(object sender, EventArgs e)
@@ -91,6 +94,8 @@ namespace Image_CSV_Resizer
 
         }
 
+
+
         private void btnCSVRead_Click(object sender, EventArgs e)
         {
             DadosCsv();
@@ -105,6 +110,7 @@ namespace Image_CSV_Resizer
                 openFile.Filter = "Arquivo separado por vírgula .csv | * .csv";
                 openFile.Title = "Selecione o arquivo CSV";
                 openFile.InitialDirectory = @"C:\Users\Lukhas Furtado\Desktop\Repositório\Image-CSV-Resizer";
+                
 
                 txtCsvFile.Enabled = false;
 
@@ -142,6 +148,8 @@ namespace Image_CSV_Resizer
 
         }
 
+
+
         private void btnResize_Click(object sender, EventArgs e)
         {
             Redimensionar();
@@ -163,8 +171,32 @@ namespace Image_CSV_Resizer
             }
             else 
             {
-                MessageBox.Show("Resizing...");
+
+                foreach (var itens in numFotoCSV) 
+                {
+                    MessageBox.Show(itens);
+                }
             }
+        }
+
+
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            LimparCampos();
+        }
+
+        void LimparCampos() 
+        {
+            
+            txtCsvFile.Clear();
+            txtDestinyFolder.Clear();
+            lstItemsCsv.Items.Clear();
+            lstPhotos.Items.Clear();
+            
+            numMatriculaCSV.Clear();
+            numFotoCSV.Clear();
+            caminhoFotos.Clear();
         }
     }
 

@@ -60,15 +60,15 @@
             this.lstPhotos.ItemHeight = 15;
             this.lstPhotos.Location = new System.Drawing.Point(12, 53);
             this.lstPhotos.Name = "lstPhotos";
-            this.lstPhotos.Size = new System.Drawing.Size(482, 199);
+            this.lstPhotos.Size = new System.Drawing.Size(512, 199);
             this.lstPhotos.TabIndex = 1;
             // 
             // btnPhotos
             // 
             this.btnPhotos.ForeColor = System.Drawing.Color.Black;
-            this.btnPhotos.Location = new System.Drawing.Point(500, 53);
+            this.btnPhotos.Location = new System.Drawing.Point(530, 53);
             this.btnPhotos.Name = "btnPhotos";
-            this.btnPhotos.Size = new System.Drawing.Size(69, 23);
+            this.btnPhotos.Size = new System.Drawing.Size(55, 23);
             this.btnPhotos.TabIndex = 2;
             this.btnPhotos.Text = "...";
             this.btnPhotos.UseVisualStyleBackColor = true;
@@ -88,15 +88,15 @@
             // 
             this.txtDestinyFolder.Location = new System.Drawing.Point(12, 298);
             this.txtDestinyFolder.Name = "txtDestinyFolder";
-            this.txtDestinyFolder.Size = new System.Drawing.Size(482, 23);
+            this.txtDestinyFolder.Size = new System.Drawing.Size(512, 23);
             this.txtDestinyFolder.TabIndex = 4;
             // 
             // btnDestinyFolder
             // 
             this.btnDestinyFolder.ForeColor = System.Drawing.Color.Black;
-            this.btnDestinyFolder.Location = new System.Drawing.Point(500, 298);
+            this.btnDestinyFolder.Location = new System.Drawing.Point(530, 298);
             this.btnDestinyFolder.Name = "btnDestinyFolder";
-            this.btnDestinyFolder.Size = new System.Drawing.Size(69, 23);
+            this.btnDestinyFolder.Size = new System.Drawing.Size(55, 23);
             this.btnDestinyFolder.TabIndex = 5;
             this.btnDestinyFolder.Text = "...";
             this.btnDestinyFolder.UseVisualStyleBackColor = true;
@@ -116,15 +116,15 @@
             // 
             this.txtCsvFile.Location = new System.Drawing.Point(12, 370);
             this.txtCsvFile.Name = "txtCsvFile";
-            this.txtCsvFile.Size = new System.Drawing.Size(482, 23);
+            this.txtCsvFile.Size = new System.Drawing.Size(512, 23);
             this.txtCsvFile.TabIndex = 7;
             // 
             // btnCSVRead
             // 
             this.btnCSVRead.ForeColor = System.Drawing.Color.Black;
-            this.btnCSVRead.Location = new System.Drawing.Point(500, 370);
+            this.btnCSVRead.Location = new System.Drawing.Point(530, 370);
             this.btnCSVRead.Name = "btnCSVRead";
-            this.btnCSVRead.Size = new System.Drawing.Size(69, 23);
+            this.btnCSVRead.Size = new System.Drawing.Size(55, 23);
             this.btnCSVRead.TabIndex = 8;
             this.btnCSVRead.Text = "...";
             this.btnCSVRead.UseVisualStyleBackColor = true;
@@ -165,7 +165,7 @@
             // 
             this.lstItemsCsv.Location = new System.Drawing.Point(12, 399);
             this.lstItemsCsv.Name = "lstItemsCsv";
-            this.lstItemsCsv.Size = new System.Drawing.Size(482, 228);
+            this.lstItemsCsv.Size = new System.Drawing.Size(512, 228);
             this.lstItemsCsv.TabIndex = 13;
             this.lstItemsCsv.UseCompatibleStateImageBehavior = false;
             // 
@@ -178,6 +178,7 @@
             this.btnClear.TabIndex = 14;
             this.btnClear.Text = "Limpar";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // Form1
             // 
