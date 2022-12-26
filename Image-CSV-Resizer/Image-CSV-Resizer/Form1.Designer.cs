@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.lstPhotos = new System.Windows.Forms.ListBox();
             this.btnPhotos = new System.Windows.Forms.Button();
@@ -188,7 +187,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::Image_CSV_Resizer.Properties.Resources.Folder_Icon;
             this.pictureBox1.Location = new System.Drawing.Point(255, 270);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(36, 26);
@@ -198,7 +197,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Image = global::Image_CSV_Resizer.Properties.Resources.Picture_Icon;
             this.pictureBox2.Location = new System.Drawing.Point(192, 20);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(37, 31);
@@ -208,7 +207,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Image = global::Image_CSV_Resizer.Properties.Resources.CSV_icon;
             this.pictureBox3.Location = new System.Drawing.Point(255, 327);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(36, 40);
