@@ -79,12 +79,13 @@ namespace Image_CSV_Resizer
             try
             {
                 var openDir = new FolderBrowserDialog();
+                openDir.InitialDirectory = @"C:\Users\lukhas.furtado\source\repos\Image-CSV-Resizer\Destino";
 
                 if (openDir.ShowDialog() == DialogResult.OK)
                 {
                     txtDestinyFolder.Clear();
                     txtDestinyFolder.Text = openDir.SelectedPath;
-                    openDir.InitialDirectory = @"C:\Users\Lukhas Furtado\Desktop\Repositório\Image-CSV-Resizer";
+                    
                 }
             }
             catch(Exception ex) 
@@ -109,7 +110,7 @@ namespace Image_CSV_Resizer
                 
                 openFile.Filter = "Arquivo separado por vírgula .csv | * .csv";
                 openFile.Title = "Selecione o arquivo CSV";
-                openFile.InitialDirectory = @"C:\Users\Lukhas Furtado\Desktop\Repositório\Image-CSV-Resizer";
+                openFile.InitialDirectory = @"C:\Users\lukhas.furtado\source\repos\Image-CSV-Resizer\";
                 
 
                 txtCsvFile.Enabled = false;
@@ -172,9 +173,24 @@ namespace Image_CSV_Resizer
             else 
             {
 
-                foreach (var itens in numFotoCSV) 
+                try
                 {
-                    MessageBox.Show(itens);
+                    foreach (var fotoCSV in numFotoCSV)
+                    {
+                        foreach (var arquivoFoto in caminhoFotos)
+                        {
+                            MessageBox.Show(FiltrarCaminhoFoto(arquivoFoto));
+                        
+                            if (fotoCSV == FiltrarCaminhoFoto(arquivoFoto)) 
+                            {
+                                
+                            }
+                        }
+                    }
+                }
+                catch(Exception ex) 
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -197,6 +213,18 @@ namespace Image_CSV_Resizer
             numMatriculaCSV.Clear();
             numFotoCSV.Clear();
             caminhoFotos.Clear();
+        }
+
+
+
+        string FiltrarCaminhoFoto(string caminhoFoto)
+        {
+            int DSCstringIndex = caminhoFoto.LastIndexOf("DSC");
+            string foto = caminhoFoto.Remove(0, DSCstringIndex);
+            foto = foto.Replace("DSC", "");
+            foto = foto.Replace(".JPG", "");
+
+            return foto;
         }
     }
 

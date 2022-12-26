@@ -38,7 +38,7 @@
             this.txtCsvFile = new System.Windows.Forms.TextBox();
             this.btnCSVRead = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.lstResizedPhotos = new System.Windows.Forms.ListBox();
             this.btnResize = new System.Windows.Forms.Button();
             this.lstItemsCsv = new System.Windows.Forms.ListView();
             this.btnClear = new System.Windows.Forms.Button();
@@ -140,14 +140,14 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Fotos Redimensionadas";
             // 
-            // listBox3
+            // lstResizedPhotos
             // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 15;
-            this.listBox3.Location = new System.Drawing.Point(591, 53);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(581, 574);
-            this.listBox3.TabIndex = 11;
+            this.lstResizedPhotos.FormattingEnabled = true;
+            this.lstResizedPhotos.ItemHeight = 15;
+            this.lstResizedPhotos.Location = new System.Drawing.Point(591, 53);
+            this.lstResizedPhotos.Name = "lstResizedPhotos";
+            this.lstResizedPhotos.Size = new System.Drawing.Size(581, 574);
+            this.lstResizedPhotos.TabIndex = 11;
             // 
             // btnResize
             // 
@@ -189,7 +189,7 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lstItemsCsv);
             this.Controls.Add(this.btnResize);
-            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.lstResizedPhotos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCSVRead);
             this.Controls.Add(this.txtCsvFile);
@@ -220,7 +220,7 @@
         private TextBox txtCsvFile;
         private Button btnCSVRead;
         private Label label4;
-        private ListBox listBox3;
+        private ListBox lstResizedPhotos;
         private Button btnResize;
         private ListView lstItemsCsv;
         private Button btnClear;
