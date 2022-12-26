@@ -20,6 +20,8 @@ namespace Image_CSV_Resizer
             ConfiguracaoListViewCSV();
             ConfiguracaoListViewResizedPhotos();
 
+            this.WindowState = FormWindowState.Maximized;
+
             BackColor = Color.FromArgb(80, 80, 80);
 
         }

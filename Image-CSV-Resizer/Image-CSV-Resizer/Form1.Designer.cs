@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.lstPhotos = new System.Windows.Forms.ListBox();
             this.btnPhotos = new System.Windows.Forms.Button();
@@ -42,6 +43,12 @@
             this.lstItemsCsv = new System.Windows.Forms.ListView();
             this.btnClear = new System.Windows.Forms.Button();
             this.lstResizedPhotos = new System.Windows.Forms.ListView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,7 +73,7 @@
             // btnPhotos
             // 
             this.btnPhotos.ForeColor = System.Drawing.Color.Black;
-            this.btnPhotos.Location = new System.Drawing.Point(530, 53);
+            this.btnPhotos.Location = new System.Drawing.Point(469, 28);
             this.btnPhotos.Name = "btnPhotos";
             this.btnPhotos.Size = new System.Drawing.Size(55, 23);
             this.btnPhotos.TabIndex = 2;
@@ -94,7 +101,7 @@
             // btnDestinyFolder
             // 
             this.btnDestinyFolder.ForeColor = System.Drawing.Color.Black;
-            this.btnDestinyFolder.Location = new System.Drawing.Point(530, 298);
+            this.btnDestinyFolder.Location = new System.Drawing.Point(469, 273);
             this.btnDestinyFolder.Name = "btnDestinyFolder";
             this.btnDestinyFolder.Size = new System.Drawing.Size(55, 23);
             this.btnDestinyFolder.TabIndex = 5;
@@ -122,7 +129,7 @@
             // btnCSVRead
             // 
             this.btnCSVRead.ForeColor = System.Drawing.Color.Black;
-            this.btnCSVRead.Location = new System.Drawing.Point(530, 370);
+            this.btnCSVRead.Location = new System.Drawing.Point(469, 345);
             this.btnCSVRead.Name = "btnCSVRead";
             this.btnCSVRead.Size = new System.Drawing.Size(55, 23);
             this.btnCSVRead.TabIndex = 8;
@@ -134,7 +141,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(591, 20);
+            this.label4.Location = new System.Drawing.Point(688, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(231, 30);
             this.label4.TabIndex = 10;
@@ -142,11 +149,11 @@
             // 
             // btnResize
             // 
-            this.btnResize.Font = new System.Drawing.Font("Segoe UI Emoji", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnResize.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnResize.ForeColor = System.Drawing.Color.Black;
-            this.btnResize.Location = new System.Drawing.Point(308, 642);
+            this.btnResize.Location = new System.Drawing.Point(544, 273);
             this.btnResize.Name = "btnResize";
-            this.btnResize.Size = new System.Drawing.Size(593, 98);
+            this.btnResize.Size = new System.Drawing.Size(125, 70);
             this.btnResize.TabIndex = 12;
             this.btnResize.Text = "Redimensionar";
             this.btnResize.UseVisualStyleBackColor = true;
@@ -163,9 +170,9 @@
             // btnClear
             // 
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(923, 655);
+            this.btnClear.Location = new System.Drawing.Point(565, 349);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(180, 66);
+            this.btnClear.Size = new System.Drawing.Size(81, 26);
             this.btnClear.TabIndex = 14;
             this.btnClear.Text = "Limpar";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -173,18 +180,51 @@
             // 
             // lstResizedPhotos
             // 
-            this.lstResizedPhotos.Location = new System.Drawing.Point(591, 53);
+            this.lstResizedPhotos.Location = new System.Drawing.Point(688, 53);
             this.lstResizedPhotos.Name = "lstResizedPhotos";
-            this.lstResizedPhotos.Size = new System.Drawing.Size(767, 574);
+            this.lstResizedPhotos.Size = new System.Drawing.Size(670, 574);
             this.lstResizedPhotos.TabIndex = 15;
             this.lstResizedPhotos.UseCompatibleStateImageBehavior = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(255, 270);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(36, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(192, 20);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(37, 31);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(255, 327);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(36, 40);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 18;
+            this.pictureBox3.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1370, 663);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lstResizedPhotos);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lstItemsCsv);
@@ -202,6 +242,9 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "Form1";
             this.Text = "Image-CSV-Resizer";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,5 +266,8 @@
         private ListView lstItemsCsv;
         private Button btnClear;
         private ListView lstResizedPhotos;
+        private PictureBox pictureBox1;
+        private PictureBox pictureBox2;
+        private PictureBox pictureBox3;
     }
 }
