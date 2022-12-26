@@ -17,17 +17,30 @@ namespace Image_CSV_Resizer
         public Form1()
         {
             InitializeComponent();
-            
+            ConfiguracaoListViewCSV();
+            ConfiguracaoListViewResizedPhotos();
+
             BackColor = Color.FromArgb(80, 80, 80);
 
-
+        }
+        void ConfiguracaoListViewCSV() 
+        {
             lstItemsCsv.View = View.Details;
             lstItemsCsv.LabelEdit = true;
+            lstItemsCsv.Scrollable = true;
             lstItemsCsv.Columns.Add("Nome", lstItemsCsv.Size.Width / 2, HorizontalAlignment.Left);
             lstItemsCsv.Columns.Add("Matrícula", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
             lstItemsCsv.Columns.Add("Nº da Foto", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
         }
-
+        void ConfiguracaoListViewResizedPhotos() 
+        {
+            lstResizedPhotos.View = View.Details;
+            lstResizedPhotos.LabelEdit = true;
+            lstResizedPhotos.Scrollable = true;
+            lstResizedPhotos.Columns.Add("Número da foto", lstResizedPhotos.Width / 6, HorizontalAlignment.Left);
+            lstResizedPhotos.Columns.Add("Matrícula do aluno", lstResizedPhotos.Width / 6, HorizontalAlignment.Left);
+            lstResizedPhotos.Columns.Add("Caminho do arquivo", lstResizedPhotos.Width / 1, HorizontalAlignment.Left);
+        }
 
 
         private void btnPhotos_Click(object sender, EventArgs e)
@@ -175,17 +188,21 @@ namespace Image_CSV_Resizer
 
                 try
                 {
+                    int matriculaIndex = 0;
                     foreach (var fotoCSV in numFotoCSV)
                     {
                         foreach (var arquivoFoto in caminhoFotos)
                         {
-                            MessageBox.Show(FiltrarCaminhoFoto(arquivoFoto));
-                        
-                            if (fotoCSV == FiltrarCaminhoFoto(arquivoFoto)) 
+                            string arquivoFotoFiltrada = FiltrarCaminhoFoto(arquivoFoto);
+
+                            if (arquivoFoto.Contains(fotoCSV)) 
                             {
-                                
-                            }
+                                string[] linha = { arquivoFotoFiltrada, numMatriculaCSV[matriculaIndex], arquivoFoto };
+                                var lstViewLine = new ListViewItem(linha);
+                                lstResizedPhotos.Items.Add(lstViewLine);
+                            } 
                         }
+                        matriculaIndex++;
                     }
                 }
                 catch(Exception ex) 
@@ -209,6 +226,7 @@ namespace Image_CSV_Resizer
             txtDestinyFolder.Clear();
             lstItemsCsv.Items.Clear();
             lstPhotos.Items.Clear();
+            lstResizedPhotos.Items.Clear();
             
             numMatriculaCSV.Clear();
             numFotoCSV.Clear();
@@ -221,8 +239,6 @@ namespace Image_CSV_Resizer
         {
             int DSCstringIndex = caminhoFoto.LastIndexOf("DSC");
             string foto = caminhoFoto.Remove(0, DSCstringIndex);
-            foto = foto.Replace("DSC", "");
-            foto = foto.Replace(".JPG", "");
 
             return foto;
         }

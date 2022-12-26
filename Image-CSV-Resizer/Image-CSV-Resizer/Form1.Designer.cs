@@ -38,10 +38,10 @@
             this.txtCsvFile = new System.Windows.Forms.TextBox();
             this.btnCSVRead = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.lstResizedPhotos = new System.Windows.Forms.ListBox();
             this.btnResize = new System.Windows.Forms.Button();
             this.lstItemsCsv = new System.Windows.Forms.ListView();
             this.btnClear = new System.Windows.Forms.Button();
+            this.lstResizedPhotos = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // label1
@@ -140,15 +140,6 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Fotos Redimensionadas";
             // 
-            // lstResizedPhotos
-            // 
-            this.lstResizedPhotos.FormattingEnabled = true;
-            this.lstResizedPhotos.ItemHeight = 15;
-            this.lstResizedPhotos.Location = new System.Drawing.Point(591, 53);
-            this.lstResizedPhotos.Name = "lstResizedPhotos";
-            this.lstResizedPhotos.Size = new System.Drawing.Size(581, 574);
-            this.lstResizedPhotos.TabIndex = 11;
-            // 
             // btnResize
             // 
             this.btnResize.Font = new System.Drawing.Font("Segoe UI Emoji", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -180,16 +171,24 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // lstResizedPhotos
+            // 
+            this.lstResizedPhotos.Location = new System.Drawing.Point(591, 53);
+            this.lstResizedPhotos.Name = "lstResizedPhotos";
+            this.lstResizedPhotos.Size = new System.Drawing.Size(767, 574);
+            this.lstResizedPhotos.TabIndex = 15;
+            this.lstResizedPhotos.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.lstResizedPhotos);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.lstItemsCsv);
             this.Controls.Add(this.btnResize);
-            this.Controls.Add(this.lstResizedPhotos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnCSVRead);
             this.Controls.Add(this.txtCsvFile);
@@ -220,9 +219,9 @@
         private TextBox txtCsvFile;
         private Button btnCSVRead;
         private Label label4;
-        private ListBox lstResizedPhotos;
         private Button btnResize;
         private ListView lstItemsCsv;
         private Button btnClear;
+        private ListView lstResizedPhotos;
     }
 }
