@@ -66,7 +66,7 @@
             this.lstPhotos.ItemHeight = 15;
             this.lstPhotos.Location = new System.Drawing.Point(12, 53);
             this.lstPhotos.Name = "lstPhotos";
-            this.lstPhotos.Size = new System.Drawing.Size(512, 199);
+            this.lstPhotos.Size = new System.Drawing.Size(551, 214);
             this.lstPhotos.TabIndex = 1;
             // 
             // btnPhotos
@@ -74,7 +74,7 @@
             this.btnPhotos.ForeColor = System.Drawing.Color.Black;
             this.btnPhotos.Location = new System.Drawing.Point(469, 28);
             this.btnPhotos.Name = "btnPhotos";
-            this.btnPhotos.Size = new System.Drawing.Size(55, 23);
+            this.btnPhotos.Size = new System.Drawing.Size(94, 23);
             this.btnPhotos.TabIndex = 2;
             this.btnPhotos.Text = "...";
             this.btnPhotos.UseVisualStyleBackColor = true;
@@ -84,7 +84,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(12, 265);
+            this.label2.Location = new System.Drawing.Point(12, 290);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(248, 30);
             this.label2.TabIndex = 3;
@@ -92,17 +92,17 @@
             // 
             // txtDestinyFolder
             // 
-            this.txtDestinyFolder.Location = new System.Drawing.Point(12, 298);
+            this.txtDestinyFolder.Location = new System.Drawing.Point(12, 323);
             this.txtDestinyFolder.Name = "txtDestinyFolder";
-            this.txtDestinyFolder.Size = new System.Drawing.Size(512, 23);
+            this.txtDestinyFolder.Size = new System.Drawing.Size(551, 23);
             this.txtDestinyFolder.TabIndex = 4;
             // 
             // btnDestinyFolder
             // 
             this.btnDestinyFolder.ForeColor = System.Drawing.Color.Black;
-            this.btnDestinyFolder.Location = new System.Drawing.Point(469, 273);
+            this.btnDestinyFolder.Location = new System.Drawing.Point(469, 298);
             this.btnDestinyFolder.Name = "btnDestinyFolder";
-            this.btnDestinyFolder.Size = new System.Drawing.Size(55, 23);
+            this.btnDestinyFolder.Size = new System.Drawing.Size(94, 23);
             this.btnDestinyFolder.TabIndex = 5;
             this.btnDestinyFolder.Text = "...";
             this.btnDestinyFolder.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(12, 337);
+            this.label3.Location = new System.Drawing.Point(12, 362);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(237, 30);
             this.label3.TabIndex = 6;
@@ -120,17 +120,17 @@
             // 
             // txtCsvFile
             // 
-            this.txtCsvFile.Location = new System.Drawing.Point(12, 370);
+            this.txtCsvFile.Location = new System.Drawing.Point(12, 395);
             this.txtCsvFile.Name = "txtCsvFile";
-            this.txtCsvFile.Size = new System.Drawing.Size(512, 23);
+            this.txtCsvFile.Size = new System.Drawing.Size(551, 23);
             this.txtCsvFile.TabIndex = 7;
             // 
             // btnCSVRead
             // 
             this.btnCSVRead.ForeColor = System.Drawing.Color.Black;
-            this.btnCSVRead.Location = new System.Drawing.Point(469, 345);
+            this.btnCSVRead.Location = new System.Drawing.Point(469, 370);
             this.btnCSVRead.Name = "btnCSVRead";
-            this.btnCSVRead.Size = new System.Drawing.Size(55, 23);
+            this.btnCSVRead.Size = new System.Drawing.Size(94, 23);
             this.btnCSVRead.TabIndex = 8;
             this.btnCSVRead.Text = "...";
             this.btnCSVRead.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(688, 20);
+            this.label4.Location = new System.Drawing.Point(776, 20);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(231, 30);
             this.label4.TabIndex = 10;
@@ -150,7 +150,7 @@
             // 
             this.btnResize.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnResize.ForeColor = System.Drawing.Color.Black;
-            this.btnResize.Location = new System.Drawing.Point(544, 273);
+            this.btnResize.Location = new System.Drawing.Point(602, 273);
             this.btnResize.Name = "btnResize";
             this.btnResize.Size = new System.Drawing.Size(125, 70);
             this.btnResize.TabIndex = 12;
@@ -160,16 +160,16 @@
             // 
             // lstItemsCsv
             // 
-            this.lstItemsCsv.Location = new System.Drawing.Point(12, 399);
+            this.lstItemsCsv.Location = new System.Drawing.Point(12, 424);
             this.lstItemsCsv.Name = "lstItemsCsv";
-            this.lstItemsCsv.Size = new System.Drawing.Size(512, 228);
+            this.lstItemsCsv.Size = new System.Drawing.Size(551, 228);
             this.lstItemsCsv.TabIndex = 13;
             this.lstItemsCsv.UseCompatibleStateImageBehavior = false;
             // 
             // btnClear
             // 
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(565, 349);
+            this.btnClear.Location = new System.Drawing.Point(623, 349);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(81, 26);
             this.btnClear.TabIndex = 14;
@@ -179,16 +179,16 @@
             // 
             // lstResizedPhotos
             // 
-            this.lstResizedPhotos.Location = new System.Drawing.Point(688, 53);
+            this.lstResizedPhotos.Location = new System.Drawing.Point(776, 53);
             this.lstResizedPhotos.Name = "lstResizedPhotos";
-            this.lstResizedPhotos.Size = new System.Drawing.Size(670, 574);
+            this.lstResizedPhotos.Size = new System.Drawing.Size(582, 598);
             this.lstResizedPhotos.TabIndex = 15;
             this.lstResizedPhotos.UseCompatibleStateImageBehavior = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Image_CSV_Resizer.Properties.Resources.Folder_Icon;
-            this.pictureBox1.Location = new System.Drawing.Point(255, 270);
+            this.pictureBox1.Location = new System.Drawing.Point(255, 295);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(36, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -208,7 +208,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Image_CSV_Resizer.Properties.Resources.CSV_icon;
-            this.pictureBox3.Location = new System.Drawing.Point(255, 327);
+            this.pictureBox3.Location = new System.Drawing.Point(246, 352);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(36, 40);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

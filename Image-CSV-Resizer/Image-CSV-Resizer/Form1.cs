@@ -2,6 +2,7 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 using System.Globalization;
+using ExifLib;
 using System.Drawing.Imaging;
 using System.Drawing;
 
@@ -39,7 +40,7 @@ namespace Image_CSV_Resizer
             lstResizedPhotos.View = View.Details;
             lstResizedPhotos.LabelEdit = true;
             lstResizedPhotos.Scrollable = true;
-            lstResizedPhotos.Columns.Add("Número da foto", lstResizedPhotos.Width / 6, HorizontalAlignment.Left);
+            lstResizedPhotos.Columns.Add("Nome da Foto", lstResizedPhotos.Width / 6, HorizontalAlignment.Left);
             lstResizedPhotos.Columns.Add("Matrícula do aluno", lstResizedPhotos.Width / 6, HorizontalAlignment.Left);
             lstResizedPhotos.Columns.Add("Caminho do arquivo", lstResizedPhotos.Width / 1, HorizontalAlignment.Left);
         }
@@ -49,7 +50,6 @@ namespace Image_CSV_Resizer
         {
             CarregaFotos();
         }
-
         void CarregaFotos() 
         {
             
@@ -88,7 +88,6 @@ namespace Image_CSV_Resizer
         {
             PastaDestino();
         }
-
         void PastaDestino()
         {
             try
@@ -116,7 +115,6 @@ namespace Image_CSV_Resizer
         {
             DadosCsv();
         }
-
         void DadosCsv() 
         {
             try 
@@ -132,8 +130,10 @@ namespace Image_CSV_Resizer
 
                 if (openFile.ShowDialog() == DialogResult.OK) 
                 {
+                    lstItemsCsv.Items.Clear();
                     numFotoCSV.Clear(); 
                     numMatriculaCSV.Clear();
+                    
 
                     txtCsvFile.Text = openFile.FileName;
                    
@@ -170,7 +170,6 @@ namespace Image_CSV_Resizer
         {
             Redimensionar();
         }
-
         void Redimensionar() 
         {
             if (lstPhotos.Items.Count <= 0)
@@ -202,6 +201,8 @@ namespace Image_CSV_Resizer
                                 string[] linha = { arquivoFotoFiltrada, numMatriculaCSV[matriculaIndex], arquivoFoto };
                                 var lstViewLine = new ListViewItem(linha);
                                 lstResizedPhotos.Items.Add(lstViewLine);
+
+                                CriarNovaImagem(arquivoFoto, numMatriculaCSV[matriculaIndex], PropriedadesExif(arquivoFoto));
                             } 
                         }
                         matriculaIndex++;
@@ -213,6 +214,53 @@ namespace Image_CSV_Resizer
                 }
             }
         }
+        void CriarNovaImagem(string caminhoImagem, string matricula, UInt16 orientacao)
+        {
+            
+            try
+            {
+                Image imagemOriginal = Image.FromFile(caminhoImagem);
+                Image novaImagemRedimensionada = new Bitmap(imagemOriginal, new Size(400, 300));
+
+                if (orientacao == 6)
+                {
+                    novaImagemRedimensionada.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                }
+                else 
+                {
+                    novaImagemRedimensionada.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                }
+
+                novaImagemRedimensionada.Save(txtDestinyFolder.Text + @"\" + matricula + ".JPG", ImageFormat.Jpeg);
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        UInt16 PropriedadesExif(string caminhoImagem)
+        {
+            UInt16 orientation;
+            UInt16 retorno = 0;
+
+            try
+            {
+                using (ExifReader leitorExif = new ExifReader(caminhoImagem))
+                {
+                    if (leitorExif.GetTagValue<UInt16>(ExifTags.Orientation, out orientation))
+                    {
+                        return orientation;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return retorno;
+        }
 
 
 
@@ -220,15 +268,15 @@ namespace Image_CSV_Resizer
         {
             LimparCampos();
         }
-
         void LimparCampos() 
         {
             
             txtCsvFile.Clear();
             txtDestinyFolder.Clear();
+
             lstItemsCsv.Items.Clear();
             lstPhotos.Items.Clear();
-            lstResizedPhotos.Items.Clear();
+            
             
             numMatriculaCSV.Clear();
             numFotoCSV.Clear();
@@ -241,6 +289,7 @@ namespace Image_CSV_Resizer
         {
             int DSCstringIndex = caminhoFoto.LastIndexOf("DSC");
             string foto = caminhoFoto.Remove(0, DSCstringIndex);
+            foto = foto.Replace(".JPG","");
 
             return foto;
         }
