@@ -140,7 +140,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(776, 20);
+            this.label4.Location = new System.Drawing.Point(755, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(231, 30);
             this.label4.TabIndex = 10;
@@ -179,9 +179,9 @@
             // 
             // lstResizedPhotos
             // 
-            this.lstResizedPhotos.Location = new System.Drawing.Point(776, 53);
+            this.lstResizedPhotos.Location = new System.Drawing.Point(755, 53);
             this.lstResizedPhotos.Name = "lstResizedPhotos";
-            this.lstResizedPhotos.Size = new System.Drawing.Size(582, 598);
+            this.lstResizedPhotos.Size = new System.Drawing.Size(603, 598);
             this.lstResizedPhotos.TabIndex = 15;
             this.lstResizedPhotos.UseCompatibleStateImageBehavior = false;
             // 

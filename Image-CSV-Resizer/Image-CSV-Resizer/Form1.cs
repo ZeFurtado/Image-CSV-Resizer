@@ -24,7 +24,6 @@ namespace Image_CSV_Resizer
             this.WindowState = FormWindowState.Maximized;
 
             BackColor = Color.FromArgb(80, 80, 80);
-
         }
         void ConfiguracaoListViewCSV() 
         {
@@ -52,12 +51,11 @@ namespace Image_CSV_Resizer
         }
         void CarregaFotos() 
         {
-            
             var openPhotos = new OpenFileDialog();
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
             openPhotos.Multiselect = true;
             openPhotos.Title = "Selecione a(s) foto(s)";
-            openPhotos.InitialDirectory = @"C:\Users\lukhas.furtado\source\repos\Image-CSV-Resizer\Fotos";
+            openPhotos.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\desktop";
 
             lstPhotos.ScrollAlwaysVisible = true;
             lstPhotos.HorizontalScrollbar = true;
@@ -93,13 +91,12 @@ namespace Image_CSV_Resizer
             try
             {
                 var openDir = new FolderBrowserDialog();
-                openDir.InitialDirectory = @"C:\Users\lukhas.furtado\source\repos\Image-CSV-Resizer\Destino";
+                openDir.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\pictures";
 
                 if (openDir.ShowDialog() == DialogResult.OK)
                 {
                     txtDestinyFolder.Clear();
-                    txtDestinyFolder.Text = openDir.SelectedPath;
-                    
+                    txtDestinyFolder.Text = openDir.SelectedPath; 
                 }
             }
             catch(Exception ex) 
@@ -123,7 +120,7 @@ namespace Image_CSV_Resizer
                 
                 openFile.Filter = "Arquivo separado por vírgula .csv | * .csv";
                 openFile.Title = "Selecione o arquivo CSV";
-                openFile.InitialDirectory = @"C:\Users\lukhas.furtado\source\repos\Image-CSV-Resizer\";
+                openFile.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\documents";
                 
 
                 txtCsvFile.Enabled = false;
@@ -216,7 +213,7 @@ namespace Image_CSV_Resizer
         }
         void CriarNovaImagem(string caminhoImagem, string matricula, UInt16 orientacao)
         {
-            
+
             try
             {
                 Image imagemOriginal = Image.FromFile(caminhoImagem);
@@ -226,15 +223,17 @@ namespace Image_CSV_Resizer
                 {
                     novaImagemRedimensionada.RotateFlip(RotateFlipType.Rotate270FlipXY);
                 }
-                else 
+                else
                 {
                     novaImagemRedimensionada.RotateFlip(RotateFlipType.Rotate90FlipXY);
                 }
 
                 novaImagemRedimensionada.Save(txtDestinyFolder.Text + @"\" + matricula + ".JPG", ImageFormat.Jpeg);
+
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
+
                 MessageBox.Show(ex.Message);
             }
         }
@@ -292,6 +291,14 @@ namespace Image_CSV_Resizer
             foto = foto.Replace(".JPG","");
 
             return foto;
+        }
+        string ObterNomeDoUser() 
+        {
+            int index = System.Security.Principal.WindowsIdentity.GetCurrent().Name.LastIndexOf(@"\");
+            string caminho = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            caminho = caminho.Remove(0, index + 1);
+
+            return caminho;
         }
     }
 
