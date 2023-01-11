@@ -5,5 +5,5 @@ Na escola que eu trabalho, centenas de alunos novos são matriculados todos os a
 Foram utilizadas as bibliotecas CSVhelper para a visualização e manipulação dos dados do arquivo CSV e a biblioteca ExifLib para visualização dos dados EXIF presente nas fotos. 
 
 #Importante
-Este software foi desenvolvido visando sua implementação no local de trabalho onde atuo. Sendo assim,
+Este software foi desenvolvido visando sua implementação no local de trabalho onde atuo. Sendo assim, o redimensionanmento de fotos pode não funcionar dependendo do tipo de nome que a câmera dá ao arquivo da foto e dependendo da identificação EXIF presente nesses arquivos. 
  
