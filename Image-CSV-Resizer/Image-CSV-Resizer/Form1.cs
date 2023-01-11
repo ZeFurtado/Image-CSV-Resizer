@@ -132,6 +132,7 @@ namespace Image_CSV_Resizer
                     lstItemsCsv.Items.Clear();
                     numFotoCSV.Clear(); 
                     numMatriculaCSV.Clear();
+                    numTurmaCSV.Clear();
                     
 
                     txtCsvFile.Text = openFile.FileName;
@@ -231,7 +232,7 @@ namespace Image_CSV_Resizer
                     novaImagemRedimensionada.RotateFlip(RotateFlipType.Rotate90FlipXY);
                 }
 
-                SalvarArquivo(novaImagemRedimensionada, turma, txtDestinyFolder.Text);
+                SalvarArquivo(novaImagemRedimensionada, turma, matricula,txtDestinyFolder.Text);
                 //novaImagemRedimensionada.Save(txtDestinyFolder.Text + @"\" + matricula + ".JPG", ImageFormat.Jpeg);
 
             }
@@ -283,6 +284,7 @@ namespace Image_CSV_Resizer
             
             numMatriculaCSV.Clear();
             numFotoCSV.Clear();
+            numTurmaCSV.Clear();
             caminhoFotos.Clear();
         }
 
@@ -304,19 +306,28 @@ namespace Image_CSV_Resizer
 
             return caminho;
         }
-        void SalvarArquivo(Image imagemRedimensionada,string nomeDaTurma, string pastaDestino) 
+        void SalvarArquivo(Image imagemRedimensionada, string nomeDaTurma, string matricula, string pastaDestino)//Cria a pasta da turma do aluno e salva o arquivo.
         {
             try
             {
-                string pastaDaTurma = @$"{pastaDestino}/{nomeDaTurma}";
-                if (!Directory.Exists(pastaDaTurma))
-                {    
-                    Directory.CreateDirectory(pastaDestino + nomeDaTurma);
-                    imagemRedimensionada.Save(pastaDaTurma);
+                string pastaDaTurma = @$"{pastaDestino}\{nomeDaTurma}";
+                
+                if (pastaDestino.Contains(nomeDaTurma))
+                {
+                    imagemRedimensionada.Save(@$"{pastaDestino}\{matricula}.JPG", ImageFormat.Jpeg);
+                }
+                else if (!Directory.Exists(pastaDaTurma))//Verifica se o diretório NÃO existe e cria ele.
+                {
+                    Directory.CreateDirectory(pastaDaTurma);
+                    imagemRedimensionada.Save(@$"{pastaDaTurma}\{matricula}.JPG", ImageFormat.Jpeg);
+                }
+                else if (Directory.Exists(pastaDaTurma))//Verifica se o diretório existe
+                {
+                    imagemRedimensionada.Save(@$"{pastaDaTurma}\{matricula}.JPG", ImageFormat.Jpeg);
                 }
                 else 
                 {
-                    imagemRedimensionada.Save(pastaDaTurma);
+                    MessageBox.Show("Não foi possível salvar o arquivo", "Arquivo Foto", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 }
             }
             catch(Exception ex) 
