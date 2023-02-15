@@ -54,25 +54,25 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(12, 60);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 30);
+            this.label1.Size = new System.Drawing.Size(207, 30);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Selecione as Fotos";
+            this.label1.Text = "Selecione a(s) Foto(s)";
             // 
             // lstPhotos
             // 
             this.lstPhotos.FormattingEnabled = true;
             this.lstPhotos.ItemHeight = 15;
-            this.lstPhotos.Location = new System.Drawing.Point(12, 53);
+            this.lstPhotos.Location = new System.Drawing.Point(12, 93);
             this.lstPhotos.Name = "lstPhotos";
-            this.lstPhotos.Size = new System.Drawing.Size(551, 214);
+            this.lstPhotos.Size = new System.Drawing.Size(630, 259);
             this.lstPhotos.TabIndex = 1;
             // 
             // btnPhotos
             // 
             this.btnPhotos.ForeColor = System.Drawing.Color.Black;
-            this.btnPhotos.Location = new System.Drawing.Point(469, 28);
+            this.btnPhotos.Location = new System.Drawing.Point(548, 68);
             this.btnPhotos.Name = "btnPhotos";
             this.btnPhotos.Size = new System.Drawing.Size(94, 23);
             this.btnPhotos.TabIndex = 2;
@@ -84,7 +84,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(12, 290);
+            this.label2.Location = new System.Drawing.Point(667, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(248, 30);
             this.label2.TabIndex = 3;
@@ -92,15 +92,15 @@
             // 
             // txtDestinyFolder
             // 
-            this.txtDestinyFolder.Location = new System.Drawing.Point(12, 323);
+            this.txtDestinyFolder.Location = new System.Drawing.Point(667, 94);
             this.txtDestinyFolder.Name = "txtDestinyFolder";
-            this.txtDestinyFolder.Size = new System.Drawing.Size(551, 23);
+            this.txtDestinyFolder.Size = new System.Drawing.Size(674, 23);
             this.txtDestinyFolder.TabIndex = 4;
             // 
             // btnDestinyFolder
             // 
             this.btnDestinyFolder.ForeColor = System.Drawing.Color.Black;
-            this.btnDestinyFolder.Location = new System.Drawing.Point(469, 298);
+            this.btnDestinyFolder.Location = new System.Drawing.Point(1222, 69);
             this.btnDestinyFolder.Name = "btnDestinyFolder";
             this.btnDestinyFolder.Size = new System.Drawing.Size(94, 23);
             this.btnDestinyFolder.TabIndex = 5;
@@ -112,7 +112,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(12, 362);
+            this.label3.Location = new System.Drawing.Point(667, 151);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(237, 30);
             this.label3.TabIndex = 6;
@@ -120,15 +120,15 @@
             // 
             // txtCsvFile
             // 
-            this.txtCsvFile.Location = new System.Drawing.Point(12, 395);
+            this.txtCsvFile.Location = new System.Drawing.Point(667, 182);
             this.txtCsvFile.Name = "txtCsvFile";
-            this.txtCsvFile.Size = new System.Drawing.Size(551, 23);
+            this.txtCsvFile.Size = new System.Drawing.Size(649, 23);
             this.txtCsvFile.TabIndex = 7;
             // 
             // btnCSVRead
             // 
             this.btnCSVRead.ForeColor = System.Drawing.Color.Black;
-            this.btnCSVRead.Location = new System.Drawing.Point(469, 370);
+            this.btnCSVRead.Location = new System.Drawing.Point(1222, 157);
             this.btnCSVRead.Name = "btnCSVRead";
             this.btnCSVRead.Size = new System.Drawing.Size(94, 23);
             this.btnCSVRead.TabIndex = 8;
@@ -140,7 +140,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(755, 21);
+            this.label4.Location = new System.Drawing.Point(12, 407);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(231, 30);
             this.label4.TabIndex = 10;
@@ -150,7 +150,7 @@
             // 
             this.btnResize.Font = new System.Drawing.Font("Segoe UI Emoji", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnResize.ForeColor = System.Drawing.Color.Black;
-            this.btnResize.Location = new System.Drawing.Point(602, 273);
+            this.btnResize.Location = new System.Drawing.Point(933, 367);
             this.btnResize.Name = "btnResize";
             this.btnResize.Size = new System.Drawing.Size(125, 70);
             this.btnResize.TabIndex = 12;
@@ -160,16 +160,16 @@
             // 
             // lstItemsCsv
             // 
-            this.lstItemsCsv.Location = new System.Drawing.Point(12, 424);
+            this.lstItemsCsv.Location = new System.Drawing.Point(667, 211);
             this.lstItemsCsv.Name = "lstItemsCsv";
-            this.lstItemsCsv.Size = new System.Drawing.Size(551, 228);
+            this.lstItemsCsv.Size = new System.Drawing.Size(674, 140);
             this.lstItemsCsv.TabIndex = 13;
             this.lstItemsCsv.UseCompatibleStateImageBehavior = false;
             // 
             // btnClear
             // 
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(623, 349);
+            this.btnClear.Location = new System.Drawing.Point(760, 390);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(81, 26);
             this.btnClear.TabIndex = 14;
@@ -179,16 +179,16 @@
             // 
             // lstResizedPhotos
             // 
-            this.lstResizedPhotos.Location = new System.Drawing.Point(755, 53);
+            this.lstResizedPhotos.Location = new System.Drawing.Point(12, 443);
             this.lstResizedPhotos.Name = "lstResizedPhotos";
-            this.lstResizedPhotos.Size = new System.Drawing.Size(603, 598);
+            this.lstResizedPhotos.Size = new System.Drawing.Size(1329, 450);
             this.lstResizedPhotos.TabIndex = 15;
             this.lstResizedPhotos.UseCompatibleStateImageBehavior = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Image_CSV_Resizer.Properties.Resources.Folder_Icon;
-            this.pictureBox1.Location = new System.Drawing.Point(255, 295);
+            this.pictureBox1.Location = new System.Drawing.Point(910, 66);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(36, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -198,7 +198,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Image_CSV_Resizer.Properties.Resources.Picture_Icon;
-            this.pictureBox2.Location = new System.Drawing.Point(192, 20);
+            this.pictureBox2.Location = new System.Drawing.Point(212, 59);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(37, 31);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -208,7 +208,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Image_CSV_Resizer.Properties.Resources.CSV_icon;
-            this.pictureBox3.Location = new System.Drawing.Point(246, 352);
+            this.pictureBox3.Location = new System.Drawing.Point(901, 141);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(36, 40);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -220,7 +220,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(1370, 663);
+            this.ClientSize = new System.Drawing.Size(1370, 905);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);

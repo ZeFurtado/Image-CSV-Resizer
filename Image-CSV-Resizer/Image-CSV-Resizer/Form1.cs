@@ -26,7 +26,7 @@ namespace Image_CSV_Resizer
 
             BackColor = Color.FromArgb(80, 80, 80);
         }
-        void ConfiguracaoListViewCSV() 
+        void ConfiguracaoListViewCSV()
         {
             lstItemsCsv.View = View.Details;
             lstItemsCsv.LabelEdit = true;

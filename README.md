@@ -6,4 +6,6 @@ Foram utilizadas as bibliotecas CSVhelper para a visualização e manipulação 
 
 #Importante
 Este software foi desenvolvido visando sua implementação no local de trabalho onde atuo. Sendo assim, o redimensionanmento de fotos pode não funcionar dependendo do tipo de nome que a câmera dá ao arquivo da foto e dependendo da identificação EXIF presente nesses arquivos. 
+
+
  
