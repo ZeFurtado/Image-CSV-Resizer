@@ -197,14 +197,16 @@ namespace Image_CSV_Resizer
                         {
                             string arquivoFotoFiltrada = FiltrarCaminhoFoto(arquivoFoto);
 
-                            if (arquivoFoto.Contains(fotoCSV)) 
+                            if (arquivoFoto.Contains(fotoCSV))
                             {
-                                string[] linha = { numTurmaCSV[index], arquivoFotoFiltrada, numMatriculaCSV[index]};
+                                string[] linha = { numTurmaCSV[index], arquivoFotoFiltrada, numMatriculaCSV[index] };
                                 var lstViewLine = new ListViewItem(linha);
                                 lstResizedPhotos.Items.Add(lstViewLine);
 
-                                CriarNovaImagem(numTurmaCSV[index],arquivoFoto, numMatriculaCSV[index], PropriedadesExif(arquivoFoto));
-                            } 
+                                CriarNovaImagem(numTurmaCSV[index], arquivoFoto, numMatriculaCSV[index], PropriedadesExif(arquivoFoto));
+                            }
+                          
+
                         }
                         index++;
                     }
@@ -233,7 +235,7 @@ namespace Image_CSV_Resizer
                 }
 
                 SalvarArquivo(novaImagemRedimensionada, turma, matricula,txtDestinyFolder.Text);
-                //novaImagemRedimensionada.Save(txtDestinyFolder.Text + @"\" + matricula + ".JPG", ImageFormat.Jpeg);
+               
 
             }
             catch (Exception ex)
@@ -274,7 +276,6 @@ namespace Image_CSV_Resizer
         }
         void LimparCampos() 
         {
-            
             txtCsvFile.Clear();
             txtDestinyFolder.Clear();
 
@@ -346,7 +347,7 @@ namespace Image_CSV_Resizer
         [Name("Nome")]
         public string nome { get; set; }
 
-        [Name("Matricula")]
+        [Name("Matrícula")]
         public string matricula { get; set; }
 
         [Name("Foto")]
