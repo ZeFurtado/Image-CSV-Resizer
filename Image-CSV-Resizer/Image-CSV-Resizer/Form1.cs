@@ -14,6 +14,7 @@ namespace Image_CSV_Resizer
         List<string> caminhoFotos = new List<string>();
         List<string> numMatriculaCSV = new List<string>();
         List<string> numFotoCSV = new List<string>();
+        List<string> numTurmaCSV = new List<string>();
 
         public Form1()
         {
@@ -30,7 +31,8 @@ namespace Image_CSV_Resizer
             lstItemsCsv.View = View.Details;
             lstItemsCsv.LabelEdit = true;
             lstItemsCsv.Scrollable = true;
-            lstItemsCsv.Columns.Add("Nome", lstItemsCsv.Size.Width / 2, HorizontalAlignment.Left);
+            lstItemsCsv.Columns.Add("Turma", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
+            lstItemsCsv.Columns.Add("Nome", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
             lstItemsCsv.Columns.Add("Matrícula", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
             lstItemsCsv.Columns.Add("Nº da Foto", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
         }
@@ -39,9 +41,9 @@ namespace Image_CSV_Resizer
             lstResizedPhotos.View = View.Details;
             lstResizedPhotos.LabelEdit = true;
             lstResizedPhotos.Scrollable = true;
-            lstResizedPhotos.Columns.Add("Nome da Foto", lstResizedPhotos.Width / 6, HorizontalAlignment.Left);
-            lstResizedPhotos.Columns.Add("Matrícula do aluno", lstResizedPhotos.Width / 6, HorizontalAlignment.Left);
-            lstResizedPhotos.Columns.Add("Caminho do arquivo", lstResizedPhotos.Width / 1, HorizontalAlignment.Left);
+            lstResizedPhotos.Columns.Add("Nome da Turma", lstResizedPhotos.Size.Width / 3, HorizontalAlignment.Left);
+            lstResizedPhotos.Columns.Add("Númera da Foto", lstResizedPhotos.Width / 3, HorizontalAlignment.Left);
+            lstResizedPhotos.Columns.Add("Matrícula do aluno", lstResizedPhotos.Width / 3, HorizontalAlignment.Left);
         }
 
 
@@ -130,6 +132,7 @@ namespace Image_CSV_Resizer
                     lstItemsCsv.Items.Clear();
                     numFotoCSV.Clear(); 
                     numMatriculaCSV.Clear();
+                    numTurmaCSV.Clear();
                     
 
                     txtCsvFile.Text = openFile.FileName;
@@ -145,8 +148,9 @@ namespace Image_CSV_Resizer
                         {
                             numFotoCSV.Add(items.foto);
                             numMatriculaCSV.Add(items.matricula);
+                            numTurmaCSV.Add(items.turma);
 
-                            string[] linha = { items.nome, items.matricula, items.foto };
+                            string[] linha = { items.turma, items.nome, items.matricula, items.foto };
                             var lstViewLine = new ListViewItem(linha);
                             lstItemsCsv.Items.Add(lstViewLine);
                         }
@@ -186,23 +190,25 @@ namespace Image_CSV_Resizer
 
                 try
                 {
-                    int matriculaIndex = 0;
+                    int index = 0;
                     foreach (var fotoCSV in numFotoCSV)
                     {
                         foreach (var arquivoFoto in caminhoFotos)
                         {
                             string arquivoFotoFiltrada = FiltrarCaminhoFoto(arquivoFoto);
 
-                            if (arquivoFoto.Contains(fotoCSV)) 
+                            if (arquivoFoto.Contains(fotoCSV))
                             {
-                                string[] linha = { arquivoFotoFiltrada, numMatriculaCSV[matriculaIndex], arquivoFoto };
+                                string[] linha = { numTurmaCSV[index], arquivoFotoFiltrada, numMatriculaCSV[index] };
                                 var lstViewLine = new ListViewItem(linha);
                                 lstResizedPhotos.Items.Add(lstViewLine);
 
-                                CriarNovaImagem(arquivoFoto, numMatriculaCSV[matriculaIndex], PropriedadesExif(arquivoFoto));
-                            } 
+                                CriarNovaImagem(numTurmaCSV[index], arquivoFoto, numMatriculaCSV[index], PropriedadesExif(arquivoFoto));
+                            }
+                          
+
                         }
-                        matriculaIndex++;
+                        index++;
                     }
                 }
                 catch(Exception ex) 
@@ -211,7 +217,7 @@ namespace Image_CSV_Resizer
                 }
             }
         }
-        void CriarNovaImagem(string caminhoImagem, string matricula, UInt16 orientacao)
+        void CriarNovaImagem(string turma,string caminhoImagem, string matricula, UInt16 orientacao)
         {
 
             try
@@ -228,7 +234,8 @@ namespace Image_CSV_Resizer
                     novaImagemRedimensionada.RotateFlip(RotateFlipType.Rotate90FlipXY);
                 }
 
-                novaImagemRedimensionada.Save(txtDestinyFolder.Text + @"\" + matricula + ".JPG", ImageFormat.Jpeg);
+                SalvarArquivo(novaImagemRedimensionada, turma, matricula,txtDestinyFolder.Text);
+               
 
             }
             catch (Exception ex)
@@ -269,7 +276,6 @@ namespace Image_CSV_Resizer
         }
         void LimparCampos() 
         {
-            
             txtCsvFile.Clear();
             txtDestinyFolder.Clear();
 
@@ -279,6 +285,7 @@ namespace Image_CSV_Resizer
             
             numMatriculaCSV.Clear();
             numFotoCSV.Clear();
+            numTurmaCSV.Clear();
             caminhoFotos.Clear();
         }
 
@@ -300,14 +307,47 @@ namespace Image_CSV_Resizer
 
             return caminho;
         }
+        void SalvarArquivo(Image imagemRedimensionada, string nomeDaTurma, string matricula, string pastaDestino)//Cria a pasta da turma do aluno e salva o arquivo.
+        {
+            try
+            {
+                string pastaDaTurma = @$"{pastaDestino}\{nomeDaTurma}";
+                
+                if (pastaDestino.Contains(nomeDaTurma))
+                {
+                    imagemRedimensionada.Save(@$"{pastaDestino}\{matricula}.JPG", ImageFormat.Jpeg);
+                }
+                else if (!Directory.Exists(pastaDaTurma))//Verifica se o diretório NÃO existe e cria ele.
+                {
+                    Directory.CreateDirectory(pastaDaTurma);
+                    imagemRedimensionada.Save(@$"{pastaDaTurma}\{matricula}.JPG", ImageFormat.Jpeg);
+                }
+                else if (Directory.Exists(pastaDaTurma))//Verifica se o diretório existe
+                {
+                    imagemRedimensionada.Save(@$"{pastaDaTurma}\{matricula}.JPG", ImageFormat.Jpeg);
+                }
+                else 
+                {
+                    MessageBox.Show("Não foi possível salvar o arquivo", "Arquivo Foto", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                }
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 
-    public class DadosCsv 
+    public class DadosCsv
     {
+        [Name("Turma")]
+        public string turma { get; set; }
+        
         [Name("Nome")]
         public string nome { get; set; }
 
-        [Name("Matricula")]
+        [Name("Matrícula")]
         public string matricula { get; set; }
 
         [Name("Foto")]

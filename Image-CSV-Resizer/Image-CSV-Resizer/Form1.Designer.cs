@@ -169,7 +169,7 @@
             // btnClear
             // 
             this.btnClear.ForeColor = System.Drawing.Color.Black;
-            this.btnClear.Location = new System.Drawing.Point(623, 349);
+            this.btnClear.Location = new System.Drawing.Point(626, 349);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(81, 26);
             this.btnClear.TabIndex = 14;
