@@ -10,24 +10,23 @@ using System.Windows.Forms;
 
 namespace Image_CSV_Resizer
 {
-    public partial class MenuInicial : Form
+    public partial class Form2 : Form
     {
-        Form form1 = new Form1();
-        Form form2 = new Form2();
-        public MenuInicial()
+        Fotos classeFotos = new Fotos();
+
+        public Form2()
         {
             InitializeComponent();
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            form1.ShowDialog();
-        }
+            string[] photos = classeFotos.CarregaFotos();
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            form2.ShowDialog();
+            foreach (var fotos in photos) 
+            {
+                MessageBox.Show(fotos);
+            }
         }
     }
 }
