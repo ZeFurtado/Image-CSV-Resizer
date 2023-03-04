@@ -13,19 +13,34 @@ namespace Image_CSV_Resizer
     public partial class Form2 : Form
     {
         Fotos classeFotos = new Fotos();
+        List<string> arquivoFotos = new List<string>();
 
         public Form2()
         {
             InitializeComponent();
+
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             string[] photos = classeFotos.CarregaFotos();
 
+            arquivoFotos.Clear();
+
             foreach (var fotos in photos) 
             {
-                MessageBox.Show(fotos);
+                lstPhotos.Items.Add(fotos);
+                arquivoFotos.Add(fotos);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            void LimparCampos()
+            {
+                lstPhotos.Items.Clear();
+                arquivoFotos.Clear();
             }
         }
     }

@@ -16,6 +16,7 @@ namespace Image_CSV_Resizer
         List<string> numFotoCSV = new List<string>();
         List<string> numTurmaCSV = new List<string>();
 
+        
         public Form1()
         {
             InitializeComponent();
@@ -53,14 +54,16 @@ namespace Image_CSV_Resizer
         }
         void CarregaFotos() 
         {
+            lstPhotos.ScrollAlwaysVisible = true;
+            lstPhotos.HorizontalScrollbar = true;
+
             var openPhotos = new OpenFileDialog();
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
             openPhotos.Multiselect = true;
             openPhotos.Title = "Selecione a(s) foto(s)";
             openPhotos.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\desktop";
 
-            lstPhotos.ScrollAlwaysVisible = true;
-            lstPhotos.HorizontalScrollbar = true;
+            
             try
             {
                 if (openPhotos.ShowDialog() == DialogResult.OK)
@@ -107,7 +110,6 @@ namespace Image_CSV_Resizer
             }
 
         }
-
 
 
         private void btnCSVRead_Click(object sender, EventArgs e)

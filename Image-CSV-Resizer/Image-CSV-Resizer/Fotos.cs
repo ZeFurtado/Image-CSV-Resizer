@@ -10,18 +10,15 @@ namespace Image_CSV_Resizer
     {
         public string[] CarregaFotos() 
         {
-            string[] fotos = { "Não", "Bombou" };
+            string[] fotos = {"Não", "Bombou"};
 
             var openPhotos = new OpenFileDialog();
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
             openPhotos.Multiselect = true;
             openPhotos.Title = "Selecione as fotos";
 
-            
-
             try
             {
-
                 if (openPhotos.ShowDialog() == DialogResult.OK)
                 {
                     return openPhotos.FileNames;
