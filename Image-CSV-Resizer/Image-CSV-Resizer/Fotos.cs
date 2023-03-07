@@ -35,5 +35,11 @@ namespace Image_CSV_Resizer
                 MessageBox.Show(ex.Message);
             }
         }
+
+        public Image RedimensionarFoto(string caminhoDoArquivo,string nomeDoArquivo) 
+        {
+            Image fotoOriginal = Image.FromFile(caminhoDoArquivo);
+            return fotoOriginal;
+        }
     }
 }
