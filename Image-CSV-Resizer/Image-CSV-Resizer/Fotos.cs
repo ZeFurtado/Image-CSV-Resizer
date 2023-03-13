@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ExifLib;
 
 namespace Image_CSV_Resizer
 {
@@ -10,11 +11,11 @@ namespace Image_CSV_Resizer
     {
         public string[] CarregaFotos() 
         {
-            string[] fotos = {"Não", "Bombou"};
+            string[] fotos = {""};
 
             var openPhotos = new OpenFileDialog();
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
-            openPhotos.Multiselect = true;
+            openPhotos.Multiselect = false;
             openPhotos.Title = "Selecione as fotos";
 
             try
@@ -36,10 +37,22 @@ namespace Image_CSV_Resizer
             }
         }
 
-        public Image RedimensionarFoto(string caminhoDoArquivo,string nomeDoArquivo) 
+        public Image RedimensionarFoto(string caminhoDoArquivo, int altura, int largura) 
         {
-            Image fotoOriginal = Image.FromFile(caminhoDoArquivo);
-            return fotoOriginal;
+            try
+            {
+                Image fotoOriginal = Image.FromFile(caminhoDoArquivo);
+                Image fotoRedimensionada = new Bitmap(fotoOriginal, largura, altura);
+
+                return fotoRedimensionada;
+            }
+            catch(Exception ex) 
+            {
+                Image erro = new Bitmap(1, 1);
+                MessageBox.Show(ex.Message);
+                return erro;
+            }
+
         }
     }
 }
