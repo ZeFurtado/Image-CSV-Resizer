@@ -15,6 +15,7 @@ namespace Image_CSV_Resizer
     {
         Fotos classeFotos = new Fotos();
         List<string> arquivoFotos = new List<string>();
+        List<string> caminhoDaFoto = new List<string>();
 
         public Form2()
         {
@@ -40,7 +41,7 @@ namespace Image_CSV_Resizer
             foreach (var fotos in photos) 
             {
                 lstPhotos.Items.Add(fotos);
-                arquivoFotos.Add(fotos);
+                arquivoFotos.Add(fotos.Remove(0,fotos.LastIndexOf("/")));
             }
         }
 
@@ -67,10 +68,8 @@ namespace Image_CSV_Resizer
                 int index = 0;
                 foreach (var arquivos in arquivoFotos)
                 {
-
-                    Image fotoRedimensionada = classeFotos.RedimensionarFoto(arquivoFotos[index], int.Parse(txtHeight.Text), int.Parse(txtWidth.Text));
-                    fotoRedimensionada.Save($"{txtDestinyFolder.Text}/fotoRedimensionada.JPG", ImageFormat.Jpeg);
-
+                    Image fotoRedimensionada = classeFotos.RedimensionarFoto(arquivoFotos[index], int.Parse(txtWidth.Text), int.Parse(txtHeight.Text));
+                    fotoRedimensionada.Save($"{txtDestinyFolder.Text}/fotoRedimensionada{index}.JPG", ImageFormat.Tiff);
                     index++;
                 }
             }

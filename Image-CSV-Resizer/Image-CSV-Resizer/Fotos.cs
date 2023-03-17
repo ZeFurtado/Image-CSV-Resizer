@@ -15,7 +15,7 @@ namespace Image_CSV_Resizer
 
             var openPhotos = new OpenFileDialog();
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
-            openPhotos.Multiselect = false;
+            openPhotos.Multiselect = true;
             openPhotos.Title = "Selecione as fotos";
 
             try
@@ -44,6 +44,15 @@ namespace Image_CSV_Resizer
                 Image fotoOriginal = Image.FromFile(caminhoDoArquivo);
                 Image fotoRedimensionada = new Bitmap(fotoOriginal, largura, altura);
 
+                if (PropriedadesExif(caminhoDoArquivo) == 6)
+                {
+                    fotoRedimensionada.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                }
+                else 
+                {
+                    fotoRedimensionada.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                }
+
                 return fotoRedimensionada;
             }
             catch(Exception ex) 
@@ -53,6 +62,29 @@ namespace Image_CSV_Resizer
                 return erro;
             }
 
+        }
+
+        public UInt16 PropriedadesExif(string caminhoImagem) 
+        {
+            UInt16 orientation;
+            UInt16 retorno = 0;
+
+            try
+            {
+                using (ExifReader leitorExif = new ExifReader(caminhoImagem)) 
+                {
+                    if (leitorExif.GetTagValue<UInt16>(ExifTags.Orientation, out orientation)) 
+                    {
+                        return orientation;
+                    } 
+                }
+            }
+            catch 
+            {
+                return retorno;
+            }
+
+            return retorno;
         }
     }
 }

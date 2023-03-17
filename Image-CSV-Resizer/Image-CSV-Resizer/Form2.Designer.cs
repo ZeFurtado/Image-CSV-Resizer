@@ -144,7 +144,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(108, 9);
+            this.label3.Location = new System.Drawing.Point(121, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(188, 30);
             this.label3.TabIndex = 9;
@@ -155,7 +155,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label4.Location = new System.Drawing.Point(243, 62);
+            this.label4.Location = new System.Drawing.Point(224, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 17);
             this.label4.TabIndex = 10;
@@ -163,7 +163,7 @@
             // 
             // txtWidth
             // 
-            this.txtWidth.Location = new System.Drawing.Point(302, 62);
+            this.txtWidth.Location = new System.Drawing.Point(283, 62);
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(67, 23);
             this.txtWidth.TabIndex = 11;
@@ -173,7 +173,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(243, 105);
+            this.label5.Location = new System.Drawing.Point(224, 105);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 17);
             this.label5.TabIndex = 12;
@@ -181,7 +181,7 @@
             // 
             // txtHeight
             // 
-            this.txtHeight.Location = new System.Drawing.Point(302, 105);
+            this.txtHeight.Location = new System.Drawing.Point(283, 105);
             this.txtHeight.Name = "txtHeight";
             this.txtHeight.Size = new System.Drawing.Size(67, 23);
             this.txtHeight.TabIndex = 13;
@@ -207,7 +207,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(52, 53);
+            this.button5.Location = new System.Drawing.Point(77, 53);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(110, 36);
             this.button5.TabIndex = 16;
@@ -217,7 +217,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(52, 97);
+            this.button6.Location = new System.Drawing.Point(77, 97);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(110, 36);
             this.button6.TabIndex = 17;
