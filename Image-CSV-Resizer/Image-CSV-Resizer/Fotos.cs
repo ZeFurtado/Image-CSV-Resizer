@@ -41,7 +41,15 @@ namespace Image_CSV_Resizer
         {
             try
             {
+
+                //!!!!!!!!!!!Terminar corte da foto do Crachá!!!!!!!!!!!
                 Image fotoOriginal = Image.FromFile(caminhoDoArquivo);
+
+                if (altura == 768 && largura == 663) 
+                {
+                    Rectangle cropArea = new Rectangle(50, 50, 500, 500);
+                }
+
                 Image fotoRedimensionada = new Bitmap(fotoOriginal, largura, altura);
 
                 if (PropriedadesExif(caminhoDoArquivo) == 6)

@@ -342,16 +342,17 @@ namespace Image_CSV_Resizer
 
     public class DadosCsv
     {
-        [Name("Turma")]
+        //Pega os campos do documento CSV
+        [Name("Turma", "turma")]
         public string turma { get; set; }
         
-        [Name("Nome")]
+        [Name("Nome", "Nomes", "nome", "nomes")]
         public string nome { get; set; }
 
-        [Name("Matrícula")]
+        [Name("Matrícula", "Matricula", "Matriculas", "matriculas", "matrículas")]
         public string matricula { get; set; }
 
-        [Name("Foto")]
+        [Name("Foto", "Fotos", "foto", "fotos")]
         public string foto { get; set; }
     }
 

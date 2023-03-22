@@ -14,7 +14,7 @@ namespace Image_CSV_Resizer
     public partial class Form2 : Form
     {
         Fotos classeFotos = new Fotos();
-        List<string> arquivoFotos = new List<string>();
+        List<string> nomeDoArquivoDaFoto = new List<string>();
         List<string> caminhoDaFoto = new List<string>();
 
         public Form2()
@@ -33,15 +33,15 @@ namespace Image_CSV_Resizer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] photos = classeFotos.CarregaFotos();
+            LimparCampos();
 
-            arquivoFotos.Clear();
-            lstPhotos.Items.Clear();
+            string[] photos = classeFotos.CarregaFotos();
 
             foreach (var fotos in photos) 
             {
                 lstPhotos.Items.Add(fotos);
-                arquivoFotos.Add(fotos.Remove(0,fotos.LastIndexOf("/")));
+                caminhoDaFoto.Add(fotos);
+                nomeDoArquivoDaFoto.Add(fotos.Remove(0,fotos.LastIndexOf(@"\") + 1));
             }
         }
 
@@ -66,10 +66,11 @@ namespace Image_CSV_Resizer
             } else
             {
                 int index = 0;
-                foreach (var arquivos in arquivoFotos)
+                foreach (var arquivos in nomeDoArquivoDaFoto)
                 {
-                    Image fotoRedimensionada = classeFotos.RedimensionarFoto(arquivoFotos[index], int.Parse(txtWidth.Text), int.Parse(txtHeight.Text));
-                    fotoRedimensionada.Save($"{txtDestinyFolder.Text}/fotoRedimensionada{index}.JPG", ImageFormat.Tiff);
+                    Image fotoRedimensionada = classeFotos.RedimensionarFoto(caminhoDaFoto[index], int.Parse(txtWidth.Text), int.Parse(txtHeight.Text));
+                    fotoRedimensionada.Save($"{txtDestinyFolder.Text}/{nomeDoArquivoDaFoto[index]}", ImageFormat.Jpeg);
+                    lstFotosRedimensionadas.Items.Add(nomeDoArquivoDaFoto[index]);
                     index++;
                 }
             }
@@ -97,8 +98,9 @@ namespace Image_CSV_Resizer
 
         void LimparCampos()
         {
+            nomeDoArquivoDaFoto.Clear();
             lstPhotos.Items.Clear();
-            arquivoFotos.Clear();
+            caminhoDaFoto.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -110,5 +112,7 @@ namespace Image_CSV_Resizer
                 txtDestinyFolder.Text = pastaDestino.SelectedPath;
             }
         }
+
+        
     }
 }
