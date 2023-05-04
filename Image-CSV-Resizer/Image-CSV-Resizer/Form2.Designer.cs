@@ -121,12 +121,13 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(106, 492);
+            this.button3.BackColor = System.Drawing.Color.Silver;
+            this.button3.Location = new System.Drawing.Point(132, 486);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(171, 74);
+            this.button3.Size = new System.Drawing.Size(189, 82);
             this.button3.TabIndex = 7;
             this.button3.Text = "Redimensionar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
@@ -144,7 +145,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label3.Location = new System.Drawing.Point(151, 82);
+            this.label3.Location = new System.Drawing.Point(161, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(188, 30);
             this.label3.TabIndex = 9;
@@ -188,9 +189,9 @@
             // 
             // lstFotosRedimensionadas
             // 
-            this.lstFotosRedimensionadas.Location = new System.Drawing.Point(496, 53);
+            this.lstFotosRedimensionadas.Location = new System.Drawing.Point(496, 55);
             this.lstFotosRedimensionadas.Name = "lstFotosRedimensionadas";
-            this.lstFotosRedimensionadas.Size = new System.Drawing.Size(544, 497);
+            this.lstFotosRedimensionadas.Size = new System.Drawing.Size(544, 495);
             this.lstFotosRedimensionadas.TabIndex = 14;
             this.lstFotosRedimensionadas.UseCompatibleStateImageBehavior = false;
             // 
@@ -207,19 +208,20 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(28, 12);
+            this.button5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button5.Location = new System.Drawing.Point(83, 28);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(185, 54);
+            this.button5.Size = new System.Drawing.Size(134, 51);
             this.button5.TabIndex = 16;
             this.button5.Text = "Carterinha";
-            this.button5.UseVisualStyleBackColor = true;
+            this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(259, 12);
+            this.button6.Location = new System.Drawing.Point(276, 28);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(195, 54);
+            this.button6.Size = new System.Drawing.Size(144, 51);
             this.button6.TabIndex = 17;
             this.button6.Text = "Crachá";
             this.button6.UseVisualStyleBackColor = true;

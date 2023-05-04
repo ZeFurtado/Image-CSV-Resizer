@@ -204,7 +204,7 @@ namespace Image_CSV_Resizer
                                 var lstViewLine = new ListViewItem(linha);
                                 lstResizedPhotos.Items.Add(lstViewLine);
 
-                                CriarNovaImagem(numTurmaCSV[index], arquivoFoto, numMatriculaCSV[index], PropriedadesExif(arquivoFoto));
+                                CriarNovaImagem(numTurmaCSV[index], arquivoFoto, numMatriculaCSV[index], PegaOrientacaoDaFoto(arquivoFoto));
                             }
                           
 
@@ -235,7 +235,7 @@ namespace Image_CSV_Resizer
                     novaImagemRedimensionada.RotateFlip(RotateFlipType.Rotate90FlipXY);
                 }
 
-                SalvarArquivo(novaImagemRedimensionada, turma, matricula,txtDestinyFolder.Text);
+                SalvarArquivo(novaImagemRedimensionada, turma, matricula, txtDestinyFolder.Text);
                
 
             }
@@ -245,7 +245,7 @@ namespace Image_CSV_Resizer
                 MessageBox.Show(ex.Message);
             }
         }
-        UInt16 PropriedadesExif(string caminhoImagem)
+        UInt16 PegaOrientacaoDaFoto(string caminhoImagem)
         {
             UInt16 orientation;
             UInt16 retorno = 0;

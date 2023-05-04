@@ -21,13 +21,17 @@ namespace Image_CSV_Resizer
         {
             InitializeComponent();
 
-            //Desabilita edição da altura e largura das fotos
+            //Desabilita edição da altura e largura das fotos no Windows Forms
             txtHeight.Enabled = false;
             txtWidth.Enabled = false;
 
             //Configuração das barras de rolagem da listagem das fotos
             lstPhotos.ScrollAlwaysVisible = true;
             lstPhotos.HorizontalScrollbar = true;
+
+            lstFotosRedimensionadas.View = View.Details;
+            lstFotosRedimensionadas.Columns.Add("Foto redimensionada", lstFotosRedimensionadas.Width, HorizontalAlignment.Left);
+
             
         }
 
