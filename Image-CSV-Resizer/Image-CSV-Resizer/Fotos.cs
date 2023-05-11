@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExifLib;
+using System.Drawing.Imaging;
 
 namespace Image_CSV_Resizer
 {
@@ -39,6 +40,8 @@ namespace Image_CSV_Resizer
 
         public Image RedimensionarFoto(string caminhoDoArquivo, int altura, int largura) 
         {
+
+            
             try
             {
 
@@ -93,6 +96,11 @@ namespace Image_CSV_Resizer
             }
 
             return retorno;
+        }
+
+        public void SalvarFoto(Image fotoRedimensionada, string caminhoImagem, string nomeDoArquivo)
+        {
+            fotoRedimensionada.Save($"{caminhoImagem}/{nomeDoArquivo}", ImageFormat.Jpeg);
         }
     }
 }

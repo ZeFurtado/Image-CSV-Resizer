@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Imaging;
 
 namespace Image_CSV_Resizer
 {
@@ -21,18 +20,15 @@ namespace Image_CSV_Resizer
         {
             InitializeComponent();
 
-            //Desabilita edição da altura e largura das fotos no Windows Forms
+            //Desabilita edição dos campos altura e largura das fotos no Windows Forms
             txtHeight.Enabled = false;
             txtWidth.Enabled = false;
 
             //Configuração das barras de rolagem da listagem das fotos
             lstPhotos.ScrollAlwaysVisible = true;
             lstPhotos.HorizontalScrollbar = true;
-
             lstFotosRedimensionadas.View = View.Details;
             lstFotosRedimensionadas.Columns.Add("Foto redimensionada", lstFotosRedimensionadas.Width, HorizontalAlignment.Left);
-
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,12 +52,12 @@ namespace Image_CSV_Resizer
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtHeight.Text) && string.IsNullOrEmpty(txtWidth.Text))
+            if (string.IsNullOrEmpty(txtHeight.Text) && string.IsNullOrEmpty(txtWidth.Text))//Verifica se foi selecionada opção de redimensionamento
             {
                 MessageBox.Show("Não foi selecionada nenhuma opção de redimensionamento!!!", "Redimensionamento não definido", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
-            else if (lstPhotos.Items.Count == 0)
-            {
+            else if (lstPhotos.Items.Count == 0)//Verifica se foi selecionada alguma foto
+            {                
                 MessageBox.Show("Não foi selecionada nenhuma foto!!!", "Nenhuma foto selecionada", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
             else if (string.IsNullOrEmpty(txtDestinyFolder.Text))
@@ -73,7 +69,7 @@ namespace Image_CSV_Resizer
                 foreach (var arquivos in nomeDoArquivoDaFoto)
                 {
                     Image fotoRedimensionada = classeFotos.RedimensionarFoto(caminhoDaFoto[index], int.Parse(txtWidth.Text), int.Parse(txtHeight.Text));
-                    fotoRedimensionada.Save($"{txtDestinyFolder.Text}/{nomeDoArquivoDaFoto[index]}", ImageFormat.Jpeg);
+                    classeFotos.SalvarFoto(fotoRedimensionada, txtDestinyFolder.Text, nomeDoArquivoDaFoto[index]);
                     lstFotosRedimensionadas.Items.Add(nomeDoArquivoDaFoto[index]);
                     index++;
                 }
@@ -102,6 +98,7 @@ namespace Image_CSV_Resizer
 
         void LimparCampos()
         {
+            //Limpa os campos e as listas onde foi armazenado o caminho das fotos
             nomeDoArquivoDaFoto.Clear();
             lstPhotos.Items.Clear();
             caminhoDaFoto.Clear();
@@ -109,6 +106,7 @@ namespace Image_CSV_Resizer
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Seleciona a pasta destino onde vai ser salvo a foto redimensionada
             var pastaDestino = new FolderBrowserDialog();
             if (pastaDestino.ShowDialog() == DialogResult.OK) 
             {
