@@ -15,6 +15,8 @@ namespace Image_CSV_Resizer
         Fotos classeFotos = new Fotos();
         List<string> nomeDoArquivoDaFoto = new List<string>();
         List<string> caminhoDaFoto = new List<string>();
+        int larguraFoto;
+        int alturaFoto;
 
         public Form2()
         {
@@ -60,7 +62,7 @@ namespace Image_CSV_Resizer
             {                
                 MessageBox.Show("Não foi selecionada nenhuma foto!!!", "Nenhuma foto selecionada", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
-            else if (string.IsNullOrEmpty(txtDestinyFolder.Text))
+            else if (string.IsNullOrEmpty(txtDestinyFolder.Text))// Verifica se foi selecionada a pasta de destino
             {
                 MessageBox.Show("O caminho de destino não foi especificado", "Nenhum caminho de destino", MessageBoxButtons.OK, MessageBoxIcon.Question);
             } else
@@ -68,7 +70,7 @@ namespace Image_CSV_Resizer
                 int index = 0;
                 foreach (var arquivos in nomeDoArquivoDaFoto)
                 {
-                    Image fotoRedimensionada = classeFotos.RedimensionarFoto(caminhoDaFoto[index], int.Parse(txtWidth.Text), int.Parse(txtHeight.Text));
+                    Image fotoRedimensionada = classeFotos.RedimensionarFoto(caminhoDaFoto[index], larguraFoto, alturaFoto);
                     classeFotos.SalvarFoto(fotoRedimensionada, txtDestinyFolder.Text, nomeDoArquivoDaFoto[index]);
                     lstFotosRedimensionadas.Items.Add(nomeDoArquivoDaFoto[index]);
                     index++;
@@ -79,8 +81,8 @@ namespace Image_CSV_Resizer
         private void button6_Click(object sender, EventArgs e)
         {
             //Define as dimensões da foto para os Crachás
-            int alturaFoto = 768;
-            int larguraFoto = 663;
+            alturaFoto = 768;
+            larguraFoto = 663;
 
             txtWidth.Text = larguraFoto.ToString();
             txtHeight.Text = alturaFoto.ToString();
@@ -89,8 +91,8 @@ namespace Image_CSV_Resizer
         private void button5_Click(object sender, EventArgs e)
         {
             //Define as dimensões da foto para as Carteirinhas
-            int larguraFoto = 300;
-            int alturaFoto = 400;
+            larguraFoto = 300;
+            alturaFoto = 400;
 
             txtWidth.Text = larguraFoto.ToString();
             txtHeight.Text = alturaFoto.ToString();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ExifLib;
+using System.Drawing;
 using System.Drawing.Imaging;
 
 namespace Image_CSV_Resizer
@@ -38,30 +39,31 @@ namespace Image_CSV_Resizer
             }
         }
 
-        public Image RedimensionarFoto(string caminhoDoArquivo, int altura, int largura) 
+        public Image RedimensionarFoto(string caminhoDoArquivo, int largura, int altura) 
         {
-
-            
+    
             try
             {
-
-                //!!!!!!!!!!!Terminar corte da foto do Crachá!!!!!!!!!!!
                 Image fotoOriginal = Image.FromFile(caminhoDoArquivo);
+                Image fotoRedimensionada;
 
-                if (altura == 768 && largura == 663) 
+                if (PropriedadesExif(caminhoDoArquivo) == 6) //O número 6 representa á rotação tirada por alguém canhoto
                 {
-                    Rectangle cropArea = new Rectangle(50, 50, 500, 500);
+                    fotoOriginal.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                }
+                else
+                {
+                    fotoOriginal.RotateFlip(RotateFlipType.Rotate90FlipXY);
                 }
 
-                Image fotoRedimensionada = new Bitmap(fotoOriginal, largura, altura);
-
-                if (PropriedadesExif(caminhoDoArquivo) == 6)
+                if (altura == 768 && largura == 663)
                 {
-                    fotoRedimensionada.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                    Bitmap fotoCortada = new Bitmap(fotoOriginal, largura, 884); //Ele primeiro redimensionada a foto com Altura de 884 para manter a proporção.
+                    Rectangle cropArea = new Rectangle(0, 0, 663, 768);//Cria um retângulo de corte com o valor correto para a altura.
+                    fotoRedimensionada = fotoCortada.Clone(cropArea, fotoOriginal.PixelFormat);//Realize o corte e deixa a imagem com a Altura correta.
                 }
-                else 
-                {
-                    fotoRedimensionada.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                else {
+                    fotoRedimensionada = new Bitmap(fotoOriginal, largura, altura);
                 }
 
                 return fotoRedimensionada;
@@ -75,7 +77,7 @@ namespace Image_CSV_Resizer
 
         }
 
-        public UInt16 PropriedadesExif(string caminhoImagem) 
+        public UInt16 PropriedadesExif(string caminhoImagem) //Verifica as propriedades EXIF da imagem para extrair a orientação
         {
             UInt16 orientation;
             UInt16 retorno = 0;
@@ -100,7 +102,15 @@ namespace Image_CSV_Resizer
 
         public void SalvarFoto(Image fotoRedimensionada, string caminhoImagem, string nomeDoArquivo)
         {
-            fotoRedimensionada.Save($"{caminhoImagem}/{nomeDoArquivo}", ImageFormat.Jpeg);
+            try
+            {
+                fotoRedimensionada.Save($"{caminhoImagem}/{nomeDoArquivo}", ImageFormat.Jpeg);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }
