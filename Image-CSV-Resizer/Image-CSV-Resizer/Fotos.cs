@@ -13,7 +13,7 @@ namespace Image_CSV_Resizer
     {
         public string[] CarregaFotos() 
         {
-            string[] fotos = {""};
+            string[] fotos = {"Não foi possível carregar a foto"};
 
             var openPhotos = new OpenFileDialog();
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
@@ -41,7 +41,6 @@ namespace Image_CSV_Resizer
 
         public Image RedimensionarFoto(string caminhoDoArquivo, int largura, int altura) 
         {
-    
             try
             {
                 Image fotoOriginal = Image.FromFile(caminhoDoArquivo);

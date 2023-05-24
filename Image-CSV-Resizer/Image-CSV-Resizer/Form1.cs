@@ -228,7 +228,7 @@ namespace Image_CSV_Resizer
 
                 if (orientacao == 6)
                 {
-                    novaImagemRedimensionada.RotateFlip(RotateFlipType.Rotate270FlipXY);
+                    novaImagemRedimensionada.RotateFlip(RotateFlipType.Rotate90FlipNone);
                 }
                 else
                 {
@@ -275,6 +275,7 @@ namespace Image_CSV_Resizer
         {
             LimparCampos();
         }
+
         void LimparCampos() 
         {
             txtCsvFile.Clear();
