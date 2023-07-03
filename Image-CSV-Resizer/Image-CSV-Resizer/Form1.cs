@@ -16,17 +16,17 @@ namespace Image_CSV_Resizer
         List<string> numFotoCSV = new List<string>();
         List<string> numTurmaCSV = new List<string>();
 
-        
+
         public Form1()
         {
             InitializeComponent();
             ConfiguracaoListViewCSV();
             ConfiguracaoListViewResizedPhotos();
 
-            
+
             BackColor = Color.FromArgb(80, 80, 80);
         }
-        void ConfiguracaoListViewCSV() 
+        void ConfiguracaoListViewCSV()
         {
             lstItemsCsv.View = View.Details;
             lstItemsCsv.LabelEdit = true;
@@ -36,7 +36,7 @@ namespace Image_CSV_Resizer
             lstItemsCsv.Columns.Add("Matrícula", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
             lstItemsCsv.Columns.Add("Nº da Foto", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
         }
-        void ConfiguracaoListViewResizedPhotos() 
+        void ConfiguracaoListViewResizedPhotos()
         {
             lstResizedPhotos.View = View.Details;
             lstResizedPhotos.LabelEdit = true;
@@ -51,7 +51,7 @@ namespace Image_CSV_Resizer
         {
             CarregaFotos();
         }
-        void CarregaFotos() 
+        void CarregaFotos()
         {
             lstPhotos.ScrollAlwaysVisible = true;
             lstPhotos.HorizontalScrollbar = true;
@@ -62,7 +62,7 @@ namespace Image_CSV_Resizer
             openPhotos.Title = "Selecione a(s) foto(s)";
             openPhotos.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\desktop";
 
-            
+
             try
             {
                 if (openPhotos.ShowDialog() == DialogResult.OK)
@@ -77,11 +77,11 @@ namespace Image_CSV_Resizer
                     }
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
 
 
@@ -100,10 +100,10 @@ namespace Image_CSV_Resizer
                 if (openDir.ShowDialog() == DialogResult.OK)
                 {
                     txtDestinyFolder.Clear();
-                    txtDestinyFolder.Text = openDir.SelectedPath; 
+                    txtDestinyFolder.Text = openDir.SelectedPath;
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -115,37 +115,37 @@ namespace Image_CSV_Resizer
         {
             DadosCsv();
         }
-        void DadosCsv() 
+        void DadosCsv()
         {
-            try 
+            try
             {
                 var openFile = new OpenFileDialog();
-                
+
                 openFile.Filter = "Arquivo separado por vírgula .csv | * .csv";
                 openFile.Title = "Selecione o arquivo CSV";
                 openFile.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\documents";
-                
+
 
                 txtCsvFile.Enabled = false;
 
-                if (openFile.ShowDialog() == DialogResult.OK) 
+                if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     lstItemsCsv.Items.Clear();
-                    numFotoCSV.Clear(); 
+                    numFotoCSV.Clear();
                     numMatriculaCSV.Clear();
                     numTurmaCSV.Clear();
-                    
+
 
                     txtCsvFile.Text = openFile.FileName;
-                   
+
                     var loadCsv = new StreamReader(txtCsvFile.Text);
                     var cultureConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
 
-                    using (var dados = new CsvReader(loadCsv, cultureConfig)) 
+                    using (var dados = new CsvReader(loadCsv, cultureConfig))
                     {
                         var dadosCsv = dados.GetRecords<DadosCsv>();
 
-                        foreach (var items in dadosCsv) 
+                        foreach (var items in dadosCsv)
                         {
                             numFotoCSV.Add(items.foto);
                             numMatriculaCSV.Add(items.matricula);
@@ -159,7 +159,7 @@ namespace Image_CSV_Resizer
                 }
 
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -172,7 +172,7 @@ namespace Image_CSV_Resizer
         {
             Redimensionar();
         }
-        void Redimensionar() 
+        void Redimensionar()
         {
             if (lstPhotos.Items.Count <= 0)
             {
@@ -186,7 +186,7 @@ namespace Image_CSV_Resizer
             {
                 MessageBox.Show("Não foi selecionado arquivo CSV!!!", "Não encontrado arquivo CSV", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else 
+            else
             {
 
                 try
@@ -206,19 +206,19 @@ namespace Image_CSV_Resizer
 
                                 CriarNovaImagem(numTurmaCSV[index], arquivoFoto, numMatriculaCSV[index], PegaOrientacaoDaFoto(arquivoFoto));
                             }
-                          
+
 
                         }
                         index++;
                     }
                 }
-                catch(Exception ex) 
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
         }
-        void CriarNovaImagem(string turma,string caminhoImagem, string matricula, UInt16 orientacao)
+        void CriarNovaImagem(string turma, string caminhoImagem, string matricula, UInt16 orientacao)
         {
 
             try
@@ -236,7 +236,7 @@ namespace Image_CSV_Resizer
                 }
 
                 SalvarArquivo(novaImagemRedimensionada, turma, matricula, txtDestinyFolder.Text);
-               
+
 
             }
             catch (Exception ex)
@@ -276,15 +276,15 @@ namespace Image_CSV_Resizer
             LimparCampos();
         }
 
-        void LimparCampos() 
+        void LimparCampos()
         {
             txtCsvFile.Clear();
             txtDestinyFolder.Clear();
 
             lstItemsCsv.Items.Clear();
             lstPhotos.Items.Clear();
-            
-            
+
+
             numMatriculaCSV.Clear();
             numFotoCSV.Clear();
             numTurmaCSV.Clear();
@@ -297,11 +297,11 @@ namespace Image_CSV_Resizer
         {
             int DSCstringIndex = caminhoFoto.LastIndexOf("DSC");
             string foto = caminhoFoto.Remove(0, DSCstringIndex);
-            foto = foto.Replace(".JPG","");
+            foto = foto.Replace(".JPG", "");
 
             return foto;
         }
-        string ObterNomeDoUser() 
+        string ObterNomeDoUser()
         {
             int index = System.Security.Principal.WindowsIdentity.GetCurrent().Name.LastIndexOf(@"\");
             string caminho = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
@@ -314,7 +314,7 @@ namespace Image_CSV_Resizer
             try
             {
                 string pastaDaTurma = @$"{pastaDestino}\{nomeDaTurma}";
-                
+
                 if (pastaDestino.Contains(nomeDaTurma))
                 {
                     imagemRedimensionada.Save(@$"{pastaDestino}\{matricula}.JPG", ImageFormat.Jpeg);
@@ -328,12 +328,12 @@ namespace Image_CSV_Resizer
                 {
                     imagemRedimensionada.Save(@$"{pastaDaTurma}\{matricula}.JPG", ImageFormat.Jpeg);
                 }
-                else 
+                else
                 {
                     MessageBox.Show("Não foi possível salvar o arquivo", "Arquivo Foto", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -346,7 +346,7 @@ namespace Image_CSV_Resizer
         //Pega os campos do documento CSV
         [Name("Turma", "turma")]
         public string turma { get; set; }
-        
+
         [Name("Nome", "Nomes", "nome", "nomes")]
         public string nome { get; set; }
 
