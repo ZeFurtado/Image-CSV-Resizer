@@ -75,6 +75,8 @@ namespace Image_CSV_Resizer
                     lstFotosRedimensionadas.Items.Add(nomeDoArquivoDaFoto[index]);
                     index++;
                 }
+
+                MessageBox.Show("Redimensionamento concluído","Mensagem de Conclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
