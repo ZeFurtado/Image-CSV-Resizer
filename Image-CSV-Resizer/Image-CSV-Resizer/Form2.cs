@@ -35,7 +35,9 @@ namespace Image_CSV_Resizer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LimparCampos();
+            nomeDoArquivoDaFoto.Clear();
+            lstPhotos.Items.Clear();
+            caminhoDaFoto.Clear();
 
             string[] photos = classeFotos.CarregaFotos();
 
@@ -106,13 +108,20 @@ namespace Image_CSV_Resizer
             nomeDoArquivoDaFoto.Clear();
             lstPhotos.Items.Clear();
             caminhoDaFoto.Clear();
+            txtDestinyFolder.Clear();
+            lstFotosRedimensionadas.Clear();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             //Seleciona a pasta destino onde vai ser salvo a foto redimensionada
+            PastaDestino();
+        }
+
+        private void PastaDestino()
+        {
             var pastaDestino = new FolderBrowserDialog();
-            if (pastaDestino.ShowDialog() == DialogResult.OK) 
+            if (pastaDestino.ShowDialog() == DialogResult.OK)
             {
                 txtDestinyFolder.Clear();
                 txtDestinyFolder.Text = pastaDestino.SelectedPath;

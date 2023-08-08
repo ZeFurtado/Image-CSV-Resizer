@@ -11,6 +11,9 @@ namespace Image_CSV_Resizer
 {
     public partial class Form1 : Form
     {
+
+        Fotos classeFotos = new Fotos();
+
         List<string> caminhoFotos = new List<string>();
         List<string> numMatriculaCSV = new List<string>();
         List<string> numFotoCSV = new List<string>();
@@ -49,6 +52,15 @@ namespace Image_CSV_Resizer
 
         private void btnPhotos_Click(object sender, EventArgs e)
         {
+            
+            String[] photos = classeFotos.CarregaFotos();
+            lstPhotos.Items.Clear();
+            foreach (var fotos in photos) 
+            {
+                
+            }
+
+            
             CarregaFotos();
         }
         void CarregaFotos()
