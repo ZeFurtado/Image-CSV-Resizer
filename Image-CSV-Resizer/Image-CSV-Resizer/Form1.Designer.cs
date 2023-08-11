@@ -150,7 +150,7 @@
             // 
             btnResize.Font = new Font("Segoe UI Emoji", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnResize.ForeColor = Color.Black;
-            btnResize.Location = new Point(594, 273);
+            btnResize.Location = new Point(596, 261);
             btnResize.Name = "btnResize";
             btnResize.Size = new Size(130, 70);
             btnResize.TabIndex = 12;
@@ -219,7 +219,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Gray;
+            BackColor = Color.DimGray;
             ClientSize = new Size(1370, 663);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);

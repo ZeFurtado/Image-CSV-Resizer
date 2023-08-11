@@ -14,7 +14,7 @@ namespace Image_CSV_Resizer
 
         Fotos classeFotos = new Fotos();
 
-        List<string> caminhoFotos = new List<string>();
+        List<string> caminhoDaFoto = new List<string>();
         List<string> numMatriculaCSV = new List<string>();
         List<string> numFotoCSV = new List<string>();
         List<string> numTurmaCSV = new List<string>();
@@ -52,52 +52,16 @@ namespace Image_CSV_Resizer
 
         private void btnPhotos_Click(object sender, EventArgs e)
         {
-            
-            String[] photos = classeFotos.CarregaFotos();
             lstPhotos.Items.Clear();
-            foreach (var fotos in photos) 
-            {
-                
-            }
+            String[] photos = classeFotos.CarregaFotos();
 
-            
-            CarregaFotos();
+            foreach (var fotos in photos)
+            {
+                lstPhotos.Items.Add(fotos);
+                caminhoDaFoto.Add(fotos);
+            }
         }
-        void CarregaFotos()
-        {
-            lstPhotos.ScrollAlwaysVisible = true;
-            lstPhotos.HorizontalScrollbar = true;
-
-            var openPhotos = new OpenFileDialog();
-            openPhotos.Filter = "Somente fotos .jpg | * .jpg";
-            openPhotos.Multiselect = true;
-            openPhotos.Title = "Selecione a(s) foto(s)";
-            openPhotos.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\desktop";
-
-
-            try
-            {
-                if (openPhotos.ShowDialog() == DialogResult.OK)
-                {
-                    lstPhotos.Items.Clear();
-                    caminhoFotos.Clear();
-
-                    foreach (var fotos in openPhotos.FileNames)
-                    {
-                        lstPhotos.Items.Add(fotos);
-                        caminhoFotos.Add(fotos);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-
-
-
+        
         private void btnDestinyFolder_Click(object sender, EventArgs e)
         {
             PastaDestino();
@@ -206,7 +170,7 @@ namespace Image_CSV_Resizer
                     int index = 0;
                     foreach (var fotoCSV in numFotoCSV)
                     {
-                        foreach (var arquivoFoto in caminhoFotos)
+                        foreach (var arquivoFoto in caminhoDaFoto)
                         {
                             string arquivoFotoFiltrada = FiltrarCaminhoFoto(arquivoFoto);
 
@@ -300,7 +264,7 @@ namespace Image_CSV_Resizer
             numMatriculaCSV.Clear();
             numFotoCSV.Clear();
             numTurmaCSV.Clear();
-            caminhoFotos.Clear();
+            caminhoDaFoto.Clear();
         }
 
 
@@ -336,7 +300,7 @@ namespace Image_CSV_Resizer
                     Directory.CreateDirectory(pastaDaTurma);
                     imagemRedimensionada.Save(@$"{pastaDaTurma}\{matricula}.JPG", ImageFormat.Jpeg);
                 }
-                else if (Directory.Exists(pastaDaTurma))//Verifica se o diretório existe
+                else if (Directory.Exists(pastaDaTurma))//Verifica se o diretório existe e salva a foto nele. 
                 {
                     imagemRedimensionada.Save(@$"{pastaDaTurma}\{matricula}.JPG", ImageFormat.Jpeg);
                 }

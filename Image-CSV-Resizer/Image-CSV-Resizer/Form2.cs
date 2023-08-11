@@ -31,6 +31,9 @@ namespace Image_CSV_Resizer
             lstPhotos.HorizontalScrollbar = true;
             lstFotosRedimensionadas.View = View.Details;
             lstFotosRedimensionadas.Columns.Add("Foto redimensionada", lstFotosRedimensionadas.Width, HorizontalAlignment.Left);
+
+            //Cor do Fundo
+            BackColor = Color.FromArgb(80, 80, 80);
         }
 
         private void button1_Click(object sender, EventArgs e)

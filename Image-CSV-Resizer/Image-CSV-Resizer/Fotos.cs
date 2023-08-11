@@ -18,7 +18,8 @@ namespace Image_CSV_Resizer
             var openPhotos = new OpenFileDialog();
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
             openPhotos.Multiselect = true;
-            openPhotos.Title = "Selecione as fotos";
+            openPhotos.Title = "Selecione a(s) foto(s)";
+            openPhotos.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\desktop";
 
             try
             {
@@ -34,8 +35,9 @@ namespace Image_CSV_Resizer
             }
             catch (Exception ex) 
             {
-                return fotos;
                 MessageBox.Show(ex.Message);
+                return fotos;
+                
             }
         }
 
@@ -110,6 +112,15 @@ namespace Image_CSV_Resizer
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        private string ObterNomeDoUser()
+        {
+            int index = System.Security.Principal.WindowsIdentity.GetCurrent().Name.LastIndexOf(@"\");
+            string caminho = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            caminho = caminho.Remove(0, index + 1);
+
+            return caminho;
         }
     }
 }
