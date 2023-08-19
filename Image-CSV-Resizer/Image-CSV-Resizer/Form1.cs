@@ -13,10 +13,11 @@ namespace Image_CSV_Resizer
     {
 
         Fotos classeFotos = new Fotos();
+        DadosCsv dadosCsv = new DadosCsv();
 
-        List<string> caminhoDaFoto = new List<string>();
-        List<string> numMatriculaCSV = new List<string>();
-        List<string> numFotoCSV = new List<string>();
+        List<string> caminhoDaFoto = new List<string>(); //Recebe o caminho total do arquivo da foto
+        List<string> numMatriculaCSV = new List<string>(); //Armazena número de matrícula do aluno.
+        List<string> numFotoCSV = new List<string>(); 
         List<string> numTurmaCSV = new List<string>();
 
 
@@ -53,7 +54,7 @@ namespace Image_CSV_Resizer
         private void btnPhotos_Click(object sender, EventArgs e)
         {
             lstPhotos.Items.Clear();
-            String[] photos = classeFotos.CarregaFotos();
+            string[] photos = classeFotos.CarregaFotos();
 
             foreach (var fotos in photos)
             {
@@ -71,7 +72,7 @@ namespace Image_CSV_Resizer
             try
             {
                 var openDir = new FolderBrowserDialog();
-                openDir.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\pictures";
+                openDir.InitialDirectory = @$"C:\Users\{classeFotos.ObterNomeDoUser()}\pictures";
 
                 if (openDir.ShowDialog() == DialogResult.OK)
                 {
@@ -99,7 +100,7 @@ namespace Image_CSV_Resizer
 
                 openFile.Filter = "Arquivo separado por vírgula .csv | * .csv";
                 openFile.Title = "Selecione o arquivo CSV";
-                openFile.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\documents";
+                openFile.InitialDirectory = @$"C:\Users\{classeFotos.ObterNomeDoUser()}\documents";
 
 
                 txtCsvFile.Enabled = false;
@@ -113,13 +114,14 @@ namespace Image_CSV_Resizer
 
 
                     txtCsvFile.Text = openFile.FileName;
+                    String caminhoDoArquivo = openFile.FileName;
 
-                    var loadCsv = new StreamReader(txtCsvFile.Text);
+                    var loadCsv = new StreamReader(caminhoDoArquivo);
                     var cultureConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
 
                     using (var dados = new CsvReader(loadCsv, cultureConfig))
                     {
-                        var dadosCsv = dados.GetRecords<DadosCsv>();
+                        var dadosCsv = dados.GetRecords<Csv>();
 
                         foreach (var items in dadosCsv)
                         {
@@ -127,7 +129,7 @@ namespace Image_CSV_Resizer
                             numMatriculaCSV.Add(items.matricula);
                             numTurmaCSV.Add(items.turma);
 
-                            string[] linha = { items.turma, items.nome, items.matricula, items.foto };
+                            string[] linha = {items.turma, items.nome, items.matricula, items.foto };
                             var lstViewLine = new ListViewItem(linha);
                             lstItemsCsv.Items.Add(lstViewLine);
                         }
@@ -277,14 +279,7 @@ namespace Image_CSV_Resizer
 
             return foto;
         }
-        string ObterNomeDoUser()
-        {
-            int index = System.Security.Principal.WindowsIdentity.GetCurrent().Name.LastIndexOf(@"\");
-            string caminho = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-            caminho = caminho.Remove(0, index + 1);
-
-            return caminho;
-        }
+        
         void SalvarArquivo(Image imagemRedimensionada, string nomeDaTurma, string matricula, string pastaDestino)//Cria a pasta da turma do aluno e salva o arquivo.
         {
             try
@@ -317,7 +312,7 @@ namespace Image_CSV_Resizer
 
     }
 
-    public class DadosCsv
+    public class Csv
     {
         //Pega os campos do documento CSV
         [Name("Turma", "turma")]

@@ -114,7 +114,7 @@ namespace Image_CSV_Resizer
             
         }
 
-        private string ObterNomeDoUser()
+        public string ObterNomeDoUser()
         {
             int index = System.Security.Principal.WindowsIdentity.GetCurrent().Name.LastIndexOf(@"\");
             string caminho = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
