@@ -13,11 +13,10 @@ namespace Image_CSV_Resizer
     {
 
         Fotos classeFotos = new Fotos();
-        DadosCsv dadosCsv = new DadosCsv();
-
+        DadosCsv csvDados = new DadosCsv();
         List<string> caminhoDaFoto = new List<string>(); //Recebe o caminho total do arquivo da foto
         List<string> numMatriculaCSV = new List<string>(); //Armazena número de matrícula do aluno.
-        List<string> numFotoCSV = new List<string>(); 
+        List<string> numFotoCSV = new List<string>(); //Armazena o número da foto
         List<string> numTurmaCSV = new List<string>();
 
 
@@ -121,7 +120,7 @@ namespace Image_CSV_Resizer
 
                     using (var dados = new CsvReader(loadCsv, cultureConfig))
                     {
-                        var dadosCsv = dados.GetRecords<Csv>();
+                        var dadosCsv = dados.GetRecords<DadosCsv>();
 
                         foreach (var items in dadosCsv)
                         {
@@ -129,10 +128,11 @@ namespace Image_CSV_Resizer
                             numMatriculaCSV.Add(items.matricula);
                             numTurmaCSV.Add(items.turma);
 
-                            string[] linha = {items.turma, items.nome, items.matricula, items.foto };
-                            var lstViewLine = new ListViewItem(linha);
-                            lstItemsCsv.Items.Add(lstViewLine);
+                            string[] linha = { items.turma, items.nome, items.matricula, items.matricula, items.foto };
+                            var listViewLine = new ListViewItem(linha);
+                            lstItemsCsv.Items.Add(listViewLine);
                         }
+
                     }
                 }
 
