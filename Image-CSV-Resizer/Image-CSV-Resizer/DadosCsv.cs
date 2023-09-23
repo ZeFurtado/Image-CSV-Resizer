@@ -13,8 +13,6 @@ namespace Image_CSV_Resizer
     public class DadosCsv
     {
       
-        public ListView csvDataView = new ListView();
-
         //Pega os campos do documento CSV
         [Name("Turma", "turma")]
         public string turma { get; set;}

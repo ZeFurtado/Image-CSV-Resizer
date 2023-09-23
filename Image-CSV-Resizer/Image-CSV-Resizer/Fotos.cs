@@ -93,9 +93,9 @@ namespace Image_CSV_Resizer
                     } 
                 }
             }
-            catch 
+            catch(Exception ex) 
             {
-                return retorno;
+                MessageBox.Show(ex.Message);
             }
 
             return retorno;

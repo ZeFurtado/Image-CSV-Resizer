@@ -188,7 +188,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Folder_Icon;
-            pictureBox1.Location = new Point(284, 292);
+            pictureBox1.Location = new Point(255, 291);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(36, 26);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -198,7 +198,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = Properties.Resources.Picture_Icon;
-            pictureBox2.Location = new Point(212, 18);
+            pictureBox2.Location = new Point(192, 19);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(37, 31);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -208,7 +208,7 @@
             // pictureBox3
             // 
             pictureBox3.Image = Properties.Resources.CSV_icon;
-            pictureBox3.Location = new Point(284, 350);
+            pictureBox3.Location = new Point(246, 353);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(36, 40);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;

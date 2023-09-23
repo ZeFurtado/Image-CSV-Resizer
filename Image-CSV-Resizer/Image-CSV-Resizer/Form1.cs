@@ -2,7 +2,6 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 using System.Globalization;
-using ExifLib;
 using System.Drawing.Imaging;
 using System.Drawing;
 
@@ -13,11 +12,10 @@ namespace Image_CSV_Resizer
     {
 
         Fotos classeFotos = new Fotos();
-        DadosCsv csvDados = new DadosCsv();
         List<string> caminhoDaFoto = new List<string>(); //Recebe o caminho total do arquivo da foto
         List<string> numMatriculaCSV = new List<string>(); //Armazena número de matrícula do aluno.
         List<string> numFotoCSV = new List<string>(); //Armazena o número da foto
-        List<string> numTurmaCSV = new List<string>();
+        List<string> numTurmaCSV = new List<string>();//Armazena o número da foto
 
 
         public Form1()
@@ -61,7 +59,7 @@ namespace Image_CSV_Resizer
                 caminhoDaFoto.Add(fotos);
             }
         }
-        
+
         private void btnDestinyFolder_Click(object sender, EventArgs e)
         {
             PastaDestino();
@@ -128,7 +126,7 @@ namespace Image_CSV_Resizer
                             numMatriculaCSV.Add(items.matricula);
                             numTurmaCSV.Add(items.turma);
 
-                            string[] linha = { items.turma, items.nome, items.matricula, items.matricula, items.foto };
+                            string[] linha = {items.turma, items.nome, items.matricula, items.foto};
                             var listViewLine = new ListViewItem(linha);
                             lstItemsCsv.Items.Add(listViewLine);
                         }
@@ -182,7 +180,7 @@ namespace Image_CSV_Resizer
                                 var lstViewLine = new ListViewItem(linha);
                                 lstResizedPhotos.Items.Add(lstViewLine);
 
-                                CriarNovaImagem(numTurmaCSV[index], arquivoFoto, numMatriculaCSV[index], PegaOrientacaoDaFoto(arquivoFoto));
+                                CriarNovaImagem(numTurmaCSV[index], arquivoFoto, numMatriculaCSV[index], classeFotos.PropriedadesExif(arquivoFoto));
                             }
 
 
@@ -223,31 +221,6 @@ namespace Image_CSV_Resizer
                 MessageBox.Show(ex.Message);
             }
         }
-        UInt16 PegaOrientacaoDaFoto(string caminhoImagem)
-        {
-            UInt16 orientation;
-            UInt16 retorno = 0;
-
-            try
-            {
-                using (ExifReader leitorExif = new ExifReader(caminhoImagem))
-                {
-                    if (leitorExif.GetTagValue<UInt16>(ExifTags.Orientation, out orientation))
-                    {
-                        return orientation;
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            return retorno;
-        }
-
-
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -279,7 +252,7 @@ namespace Image_CSV_Resizer
 
             return foto;
         }
-        
+
         void SalvarArquivo(Image imagemRedimensionada, string nomeDaTurma, string matricula, string pastaDestino)//Cria a pasta da turma do aluno e salva o arquivo.
         {
             try
@@ -310,22 +283,6 @@ namespace Image_CSV_Resizer
             }
         }
 
-    }
-
-    public class Csv
-    {
-        //Pega os campos do documento CSV
-        [Name("Turma", "turma")]
-        public string turma { get; set; }
-
-        [Name("Nome", "Nomes", "nome", "nomes")]
-        public string nome { get; set; }
-
-        [Name("Matrícula", "Matricula", "Matriculas", "matriculas", "matrículas")]
-        public string matricula { get; set; }
-
-        [Name("Foto", "Fotos", "foto", "fotos")]
-        public string foto { get; set; }
     }
 
 }
