@@ -11,6 +11,8 @@ namespace Image_CSV_Resizer
 {
     public class Fotos
     {
+        private StringBuilder mensagemDeErro = new StringBuilder();
+
         public string[] CarregaFotos() 
         {
             string[] fotos = {"Não foi possível carregar a foto"};
@@ -50,7 +52,7 @@ namespace Image_CSV_Resizer
 
                 if (PropriedadesExif(caminhoDoArquivo) == 6) //O número 6 representa á rotação tirada por alguém canhoto
                 {
-                    fotoOriginal.RotateFlip(RotateFlipType.Rotate90FlipNone);
+                    fotoOriginal.RotateFlip(RotateFlipType.Rotate90FlipNone);  
                 }
                 else
                 {
@@ -98,18 +100,21 @@ namespace Image_CSV_Resizer
                 MessageBox.Show(ex.Message);
             }
 
-            return retorno;
+            return retorno; 
         }
 
-        public void SalvarFoto(Image fotoRedimensionada, string caminhoImagem, string nomeDoArquivo)
+        public void SalvarFoto(Image fotoRedimensionada, string caminhoImagem, string nomeDoArquivo) 
         {
+
             try
             {
                 fotoRedimensionada.Save($"{caminhoImagem}/{nomeDoArquivo}", ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                mensagemDeErro.Append($"Não foi possível salvar o arquivo {nomeDoArquivo}");
+                mensagemDeErro.Append(ex.Message);
+                MessageBox.Show(mensagemDeErro.ToString());
             }
             
         }

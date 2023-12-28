@@ -17,7 +17,6 @@ namespace Image_CSV_Resizer
         public MenuInicial()
         {
             InitializeComponent();
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
