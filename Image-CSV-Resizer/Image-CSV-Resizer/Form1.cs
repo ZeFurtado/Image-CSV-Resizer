@@ -4,13 +4,13 @@ using CsvHelper.Configuration.Attributes;
 using System.Globalization;
 using System.Drawing.Imaging;
 using System.Drawing;
+using System.Text;
 
 
 namespace Image_CSV_Resizer
 {
     public partial class Form1 : Form
     {
-
         Fotos classeFotos = new Fotos();
         List<string> caminhoDaFoto = new List<string>(); //Recebe o caminho total do arquivo da foto
         List<string> numMatriculaCSV = new List<string>(); //Armazena número de matrícula do aluno.
@@ -137,7 +137,15 @@ namespace Image_CSV_Resizer
             }
             catch (Exception ex)
             {
+                StringBuilder erro = new StringBuilder();
+                erro.Append("Não foi possível realizar a leitura do Arquivo CSV\n" +
+                            "Certifique-se de o conteúdo do documento possuí cabeçalhos escritos corretamente\n" +
+                            "[Nome, Turma, Matrícula, Foto]");
+                MessageBox.Show(erro.ToString());
                 MessageBox.Show(ex.Message);
+
+                
+                
             }
 
         }

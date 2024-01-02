@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Image_CSV_Resizer
 {
+    //Classe criada para extrair os dados do arquivo CSV
     public class DadosCsv
     {
       

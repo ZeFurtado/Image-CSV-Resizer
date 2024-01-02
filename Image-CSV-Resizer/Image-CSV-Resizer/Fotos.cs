@@ -37,12 +37,16 @@ namespace Image_CSV_Resizer
             }
             catch (Exception ex) 
             {
-                MessageBox.Show(ex.Message);
+                mensagemDeErro.Append($"Não foi possível abrir o arquivo {openPhotos.FileNames}");
+                mensagemDeErro.Append(ex.Message);
+                MessageBox.Show(mensagemDeErro.ToString());
                 return fotos;
                 
             }
         }
 
+
+        
         public Image RedimensionarFoto(string caminhoDoArquivo, int largura, int altura) 
         {
             try
@@ -80,6 +84,8 @@ namespace Image_CSV_Resizer
 
         }
 
+        //Para que a foto permaneca na orientação correta ao ser redimensionada é necessário conferir as propriedades EXIF do arquivo a fim de verificar --
+        //-- qual é a orientação original da foto e reposiciona-lá corretamente.
         public UInt16 PropriedadesExif(string caminhoImagem) //Verifica as propriedades EXIF da imagem para extrair a orientação
         {
             UInt16 orientation;
