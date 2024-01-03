@@ -1,31 +1,79 @@
-﻿using CsvHelper;
-using CsvHelper.Configuration;
-using CsvHelper.Configuration.Attributes;
-using System.Globalization; 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Image_CSV_Resizer
+﻿namespace Image_CSV_Resizer
 {
     //Classe criada para extrair os dados do arquivo CSV
     public class DadosCsv
     {
-      
-        //Pega os campos do documento CSV
-        [Name("Turma", "turma")]
-        public string turma { get; set;}
+        private string turma;
+        private string nome;
+        private string matricula;
+        private string numeroDaFoto;
 
-        [Name("Nome", "Nomes", "nome", "nomes")]
-        public string nome { get; set; }
+        public DadosCsv(string turma, string nome, string matricula, string numeroDaFoto) 
+        {
+            this.turma = turma;
+            this.nome = nome;
+            this.matricula = matricula;
+            this.numeroDaFoto = numeroDaFoto;
+        }
 
-        [Name("Matrícula", "Matricula", "Matriculas", "matriculas", "matrículas")]
-        public string matricula { get; set; }
+        public string GetTurma() 
+        {
+            return turma;
+        }
 
-        [Name("Foto", "Fotos", "foto", "fotos")]
-        public string foto { get; set; }
+        public void SetTurma(string turma) 
+        {
+            this.turma = turma;
+        }
 
+        public string GetNome() 
+        {
+            return nome;
+        }
+
+        public void SetNome(string nome) 
+        {
+            this.nome = nome;
+        }
+
+        public string GetMatricula() 
+        {
+            return matricula;
+        }
+
+        public void SetMatricula(string matricula) 
+        {
+            this.matricula = matricula;
+        }
+
+        public string GetNumeroDaFoto() 
+        {
+            return numeroDaFoto;
+        }
+
+        public void SetNumeroDaFoto(string numeroDaFoto) 
+        {
+            this.numeroDaFoto = numeroDaFoto;
+        }
+
+
+
+        public void CsvFileRead(string filePath) 
+        {
+
+        }
+
+        public override string ToString()
+        {
+            string content = $"Turma: {turma}\n" +
+                             $"Nome: {nome}\n" +
+                             $"Matrícula: {matricula}\n" +
+                             $"Nº da Foto: {numeroDaFoto}";
+            
+            
+            return content;
+        }
     }
+
+    
 }

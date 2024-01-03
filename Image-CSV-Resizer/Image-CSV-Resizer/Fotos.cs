@@ -41,7 +41,6 @@ namespace Image_CSV_Resizer
                 mensagemDeErro.Append(ex.Message);
                 MessageBox.Show(mensagemDeErro.ToString());
                 return fotos;
-                
             }
         }
 
@@ -109,12 +108,12 @@ namespace Image_CSV_Resizer
             return retorno; 
         }
 
-        public void SalvarFoto(Image fotoRedimensionada, string caminhoImagem, string nomeDoArquivo) 
+        public void SalvarFoto(Image fotoRedimensionada, string caminhoDestino, string nomeDoArquivo) 
         {
 
             try
             {
-                fotoRedimensionada.Save($"{caminhoImagem}/{nomeDoArquivo}", ImageFormat.Jpeg);
+                fotoRedimensionada.Save($"{caminhoDestino}/{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
