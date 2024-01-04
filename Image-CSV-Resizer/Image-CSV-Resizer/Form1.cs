@@ -219,36 +219,7 @@ namespace Image_CSV_Resizer
             return foto;
         }
 
-        void SalvarArquivo(Image imagemRedimensionada, string nomeDaTurma, string matricula, string pastaDestino)//Cria a pasta da turma do aluno e salva o arquivo.
-        {
-            try
-            {
-                string pastaDaTurma = @$"{pastaDestino}\{nomeDaTurma}";
-
-                if (pastaDestino.Contains(nomeDaTurma))
-                {
-                    imagemRedimensionada.Save(@$"{pastaDestino}\{matricula}.JPG", ImageFormat.Jpeg);
-                }
-                else if (!Directory.Exists(pastaDaTurma))//Verifica se o diretório NÃO existe e cria ele.
-                {
-                    Directory.CreateDirectory(pastaDaTurma);
-                    imagemRedimensionada.Save(@$"{pastaDaTurma}\{matricula}.JPG", ImageFormat.Jpeg);
-                }
-                else if (Directory.Exists(pastaDaTurma))//Verifica se o diretório existe e salva a foto nele. 
-                {
-                    imagemRedimensionada.Save(@$"{pastaDaTurma}\{matricula}.JPG", ImageFormat.Jpeg);
-                }
-                else
-                {
-                    MessageBox.Show("Não foi possível salvar o arquivo", "Arquivo Foto", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
+       
     }
 
     class CsvFileData
