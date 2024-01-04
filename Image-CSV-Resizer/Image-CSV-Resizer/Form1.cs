@@ -178,7 +178,7 @@ namespace Image_CSV_Resizer
                                 ListViewItem listViewItem = new ListViewItem(linha);
                                 lstResizedPhotos.Items.Add(listViewItem);
 
-                                classeFotos.SalvarFoto(classeFotos.RedimensionarFoto(arquivoFoto, 300, 400), txtDestinyFolder.Text, dados.GetMatricula());
+                                classeFotos.SalvarFoto(classeFotos.RedimensionarFoto(arquivoFoto, 300, 400), txtDestinyFolder.Text, dados.GetMatricula(), dados.GetTurma());
                             }
                         }
                     }
@@ -195,7 +195,7 @@ namespace Image_CSV_Resizer
             LimparCampos();
         }
 
-        void LimparCampos()
+        void LimparCampos() //Limpeza dos campos do formulário e das variaveis
         {
             txtCsvFile.Clear();
             txtDestinyFolder.Clear();

@@ -108,9 +108,9 @@ namespace Image_CSV_Resizer
             return retorno; 
         }
 
+        //Função para salvar a foto sem criar pasta da turma
         public void SalvarFoto(Image fotoRedimensionada, string caminhoDestino, string nomeDoArquivo) 
         {
-
             try
             {
                 fotoRedimensionada.Save($"{caminhoDestino}/{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
@@ -120,8 +120,34 @@ namespace Image_CSV_Resizer
                 mensagemDeErro.Append($"Não foi possível salvar o arquivo {nomeDoArquivo}");
                 mensagemDeErro.Append(ex.Message);
                 MessageBox.Show(mensagemDeErro.ToString());
+            }           
+        }
+
+        //Sobrecarga da função SalvarFoto para caso haja uma turma o programa criar a pasta da mesma
+        public void SalvarFoto(Image fotoRedimensionada, string caminhoDestino, string nomeDoArquivo, string turma) 
+        {
+            try
+            {
+                string caminhoPastaTurma = @$"{caminhoDestino}\{turma}";
+
+                if (caminhoDestino.Contains(turma))
+                {
+                    fotoRedimensionada.Save(@$"{caminhoDestino}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
+
+                } else if (!Directory.Exists(caminhoPastaTurma)) //Verifica se o diretório NÃO existe e cria ele.
+                {
+                    Directory.CreateDirectory(caminhoPastaTurma);
+                    fotoRedimensionada.Save($@"{caminhoPastaTurma}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
+
+                } else if (Directory.Exists(caminhoPastaTurma)) //Se a pasta existe o arquivo é salvo nela
+                {
+                    fotoRedimensionada.Save($@"{caminhoPastaTurma}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
+                }
             }
-            
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public string ObterNomeDoUser()
