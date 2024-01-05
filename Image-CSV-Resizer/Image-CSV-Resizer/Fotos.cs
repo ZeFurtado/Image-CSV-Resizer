@@ -21,7 +21,7 @@ namespace Image_CSV_Resizer
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
             openPhotos.Multiselect = true;
             openPhotos.Title = "Selecione a(s) foto(s)";
-            openPhotos.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\desktop";
+            openPhotos.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\Desktop";
 
             try
             {
@@ -130,7 +130,7 @@ namespace Image_CSV_Resizer
             {
                 string caminhoPastaTurma = @$"{caminhoDestino}\{turma}";
 
-                if (caminhoDestino.Contains(turma))
+                if (caminhoDestino.Contains(turma)) //Sé o camimho de destino já for uma pasta com o nome da turma o programa só salva ela
                 {
                     fotoRedimensionada.Save(@$"{caminhoDestino}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
 
@@ -150,6 +150,7 @@ namespace Image_CSV_Resizer
             }
         }
 
+        //Função para obter o nome do usuário e setar o diretório incial
         public string ObterNomeDoUser()
         {
             int index = System.Security.Principal.WindowsIdentity.GetCurrent().Name.LastIndexOf(@"\");
