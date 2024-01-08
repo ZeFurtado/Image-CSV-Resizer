@@ -170,11 +170,12 @@ namespace Image_CSV_Resizer
                             if (arquivoFoto.Contains(dados.GetNumeroDaFoto()))
                             {
 
-                                string[] linha = { dados.GetTurma(), nomeDaFoto, dados.GetMatricula() };
+                                string[] linha = {dados.GetTurma(), nomeDaFoto, dados.GetMatricula() };
                                 ListViewItem listViewItem = new ListViewItem(linha);
                                 lstResizedPhotos.Items.Add(listViewItem);
 
                                 classeFotos.SalvarFoto(classeFotos.RedimensionarFoto(arquivoFoto, 300, 400), txtDestinyFolder.Text, dados.GetMatricula(), dados.GetTurma());
+                                classeFotos.LogDeFotosRedimensionadas(dados, DateTime.Now.ToString("MMM ddd d HH:mm yyyy"));
                             }
                         }
                     }

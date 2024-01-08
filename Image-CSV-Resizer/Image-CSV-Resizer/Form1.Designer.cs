@@ -88,9 +88,9 @@
             label2.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(54, 138);
             label2.Name = "label2";
-            label2.Size = new Size(139, 30);
+            label2.Size = new Size(108, 30);
             label2.TabIndex = 3;
-            label2.Text = "Pasta Destino";
+            label2.Text = "Salvar em:";
             // 
             // txtDestinyFolder
             // 
