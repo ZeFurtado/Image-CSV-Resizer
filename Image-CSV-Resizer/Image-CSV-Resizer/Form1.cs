@@ -2,7 +2,6 @@ using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.Configuration.Attributes;
 using System.Globalization;
-using System.Drawing.Imaging;
 using System.Text;
 
 
@@ -17,11 +16,6 @@ namespace Image_CSV_Resizer
         public Form1()
         {
             InitializeComponent();
-            ConfiguracaoListViewCSV();
-            ConfiguracaoListViewResizedPhotos();
-
-
-            BackColor = Color.FromArgb(80, 80, 80);
         }
         void ConfiguracaoListViewCSV() //Configuração da tabela dos dados CSV
         {
@@ -101,11 +95,11 @@ namespace Image_CSV_Resizer
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     lstItemsCsv.Items.Clear();
-                    
 
+                    ConfiguracaoListViewCSV();
 
                     txtCsvFile.Text = openFile.FileName;
-                    String caminhoDoArquivo = openFile.FileName;
+                    string caminhoDoArquivo = openFile.FileName;
 
                     var loadCsv = new StreamReader(caminhoDoArquivo);
                     var cultureConfig = new CsvConfiguration(CultureInfo.InvariantCulture);
@@ -117,8 +111,8 @@ namespace Image_CSV_Resizer
                         foreach (var items in dadosCsv)
                         {
                             listaDadosCsv.Add(new DadosCsv(items.turma, items.nome, items.matricula, items.numeroDaFoto));
-                      
-                            string[] linha = {items.turma, items.nome, items.matricula, items.numeroDaFoto};
+
+                            string[] linha = { items.turma, items.nome, items.matricula, items.numeroDaFoto };
                             var listViewLine = new ListViewItem(linha);
                             lstItemsCsv.Items.Add(listViewLine);
                         }
@@ -136,8 +130,8 @@ namespace Image_CSV_Resizer
                 MessageBox.Show(erro.ToString());
                 MessageBox.Show(ex.Message);
 
-                
-                
+
+
             }
 
         }
@@ -165,15 +159,17 @@ namespace Image_CSV_Resizer
 
                 try
                 {
-                    foreach (var arquivoFoto in caminhoDaFoto) 
+                    ConfiguracaoListViewResizedPhotos();
+
+                    foreach (var arquivoFoto in caminhoDaFoto)
                     {
                         string nomeDaFoto = ObterNomeDaFoto(arquivoFoto);
 
-                        foreach (var dados in listaDadosCsv) 
+                        foreach (var dados in listaDadosCsv)
                         {
-                            if (arquivoFoto.Contains(dados.GetNumeroDaFoto())) 
+                            if (arquivoFoto.Contains(dados.GetNumeroDaFoto()))
                             {
-                                
+
                                 string[] linha = { dados.GetTurma(), nomeDaFoto, dados.GetMatricula() };
                                 ListViewItem listViewItem = new ListViewItem(linha);
                                 lstResizedPhotos.Items.Add(listViewItem);
@@ -189,7 +185,7 @@ namespace Image_CSV_Resizer
                 }
             }
         }
-        
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             LimparCampos();
@@ -210,7 +206,7 @@ namespace Image_CSV_Resizer
 
 
         //Criei essa função para tirar o caminho inteiro da foto e deixar somente o nome do Arquivo.
-        string ObterNomeDaFoto(string caminhoFoto) 
+        string ObterNomeDaFoto(string caminhoFoto)
         {
             int DSCstringIndex = caminhoFoto.LastIndexOf("DSC");
             string foto = caminhoFoto.Remove(0, DSCstringIndex);
@@ -219,7 +215,6 @@ namespace Image_CSV_Resizer
             return foto;
         }
 
-       
     }
 
     class CsvFileData

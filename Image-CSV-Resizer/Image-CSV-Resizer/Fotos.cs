@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using ExifLib;
-using System.Drawing;
 using System.Drawing.Imaging;
 
 namespace Image_CSV_Resizer
@@ -15,7 +10,7 @@ namespace Image_CSV_Resizer
 
         public string[] CarregaFotos() 
         {
-            string[] fotos = {"Não foi possível carregar a foto"};
+            string[] fotos = {""};
 
             var openPhotos = new OpenFileDialog();
             openPhotos.Filter = "Somente fotos .jpg | * .jpg";
