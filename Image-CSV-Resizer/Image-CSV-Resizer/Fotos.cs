@@ -155,16 +155,31 @@ namespace Image_CSV_Resizer
             return caminho;
         }
 
-        public void LogDeFotosRedimensionadas(DadosCsv dados, string hora) 
+        public void LogDeFotosRedimensionadas(string hora, string caminhoDaFoto)
+        {
+            string mensagem = $"{hora}\n" +
+                              $"{caminhoDaFoto}";
+
+            string caminho = @$"{Directory.GetCurrentDirectory()}\ResizedPhotosLog.txt";
+            using (StreamWriter sw = File.AppendText(caminho)) 
+            {
+                sw.WriteLine(mensagem + "\n");
+            }
+
+        }
+
+        public void LogDeFotosRedimensionadas(string hora, string caminhoDaFoto, DadosCsv dados) 
         {
             string mensagem = $"{dados}\n" +
-                              $"{hora}";
+                              $"Hora: {hora}\n" +
+                              $"Salvo inicialmente em: {caminhoDaFoto}";
 
-            string caminho = @$"C:\Users\{ObterNomeDoUser()}\Desktop\FotosRedimensionadas.txt";
-            using (StreamWriter sw = new StreamWriter(caminho)) 
+            string caminho = @$"{Directory.GetCurrentDirectory()}\ResizedPhotosLog.txt";
+            using (StreamWriter sw = File.AppendText(caminho)) 
             {
-                sw.WriteLine(mensagem);
+                sw.WriteLine(mensagem + "\n");
             }
         }
+
     }
 }

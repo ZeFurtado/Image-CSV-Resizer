@@ -25,21 +25,11 @@ namespace Image_CSV_Resizer
             //Desabilita edição dos campos altura e largura das fotos no Windows Forms
             txtHeight.Enabled = false;
             txtWidth.Enabled = false;
-
-            //Configuração das barras de rolagem da listagem das fotos
-            lstPhotos.ScrollAlwaysVisible = true;
-            lstPhotos.HorizontalScrollbar = true;
-            lstFotosRedimensionadas.View = View.Details;
-            lstFotosRedimensionadas.Columns.Add("Foto redimensionada", lstFotosRedimensionadas.Width, HorizontalAlignment.Left);
-
-            //Cor do Fundo
-            BackColor = Color.FromArgb(80, 80, 80);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             nomeDoArquivoDaFoto.Clear();
-            lstPhotos.Items.Clear();
             caminhoDaFoto.Clear();
 
             string[] photos = classeFotos.CarregaFotos();
@@ -77,7 +67,7 @@ namespace Image_CSV_Resizer
                 {
                     Image fotoRedimensionada = classeFotos.RedimensionarFoto(caminhoDaFoto[index], larguraFoto, alturaFoto);
                     classeFotos.SalvarFoto(fotoRedimensionada, txtDestinyFolder.Text, nomeDoArquivoDaFoto[index]);
-                    lstFotosRedimensionadas.Items.Add(nomeDoArquivoDaFoto[index]);
+                    classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), txtDestinyFolder.Text);
                     index++;
                 }
 

@@ -12,6 +12,7 @@ namespace Image_CSV_Resizer
         Fotos classeFotos = new Fotos();
         List<string> caminhoDaFoto = new List<string>(); //Recebe o caminho total do arquivo da foto
         List<DadosCsv> listaDadosCsv = new List<DadosCsv>();//Lista do tipo 'DadosCsv' que armazena todos os dados referente ao aluno da foto
+        string caminhoDeDestino;
 
         public Form1()
         {
@@ -27,17 +28,7 @@ namespace Image_CSV_Resizer
             lstItemsCsv.Columns.Add("Matrícula", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
             lstItemsCsv.Columns.Add("Nº da Foto", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
         }
-        void ConfiguracaoListViewResizedPhotos() //Configuração da tabela de fotos redimensionadas
-        {
-            lstResizedPhotos.View = View.Details;
-            lstResizedPhotos.LabelEdit = true;
-            lstResizedPhotos.Scrollable = true;
-            lstResizedPhotos.Columns.Add("Nome da Turma", lstResizedPhotos.Size.Width / 3, HorizontalAlignment.Left);
-            lstResizedPhotos.Columns.Add("Númera da Foto", lstResizedPhotos.Width / 3, HorizontalAlignment.Left);
-            lstResizedPhotos.Columns.Add("Matrícula do aluno", lstResizedPhotos.Width / 3, HorizontalAlignment.Left);
-        }
-
-
+        
         private void btnPhotos_Click(object sender, EventArgs e)
         {
             lstPhotos.Items.Clear();
@@ -65,6 +56,7 @@ namespace Image_CSV_Resizer
                 {
                     txtDestinyFolder.Clear();
                     txtDestinyFolder.Text = openDir.SelectedPath;
+                    caminhoDeDestino = txtDestinyFolder.Text;
                 }
             }
             catch (Exception ex)
@@ -159,8 +151,7 @@ namespace Image_CSV_Resizer
 
                 try
                 {
-                    ConfiguracaoListViewResizedPhotos();
-
+                    
                     foreach (var arquivoFoto in caminhoDaFoto)
                     {
                         string nomeDaFoto = ObterNomeDaFoto(arquivoFoto);
@@ -169,13 +160,11 @@ namespace Image_CSV_Resizer
                         {
                             if (arquivoFoto.Contains(dados.GetNumeroDaFoto()))
                             {
-
                                 string[] linha = {dados.GetTurma(), nomeDaFoto, dados.GetMatricula() };
                                 ListViewItem listViewItem = new ListViewItem(linha);
-                                lstResizedPhotos.Items.Add(listViewItem);
 
-                                classeFotos.SalvarFoto(classeFotos.RedimensionarFoto(arquivoFoto, 300, 400), txtDestinyFolder.Text, dados.GetMatricula(), dados.GetTurma());
-                                classeFotos.LogDeFotosRedimensionadas(dados, DateTime.Now.ToString("MMM ddd d HH:mm yyyy"));
+                                classeFotos.SalvarFoto(classeFotos.RedimensionarFoto(arquivoFoto, 300, 400), caminhoDeDestino, dados.GetMatricula(), dados.GetTurma());
+                                classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), @$"{caminhoDeDestino}\{dados.GetTurma()}", dados);
                             }
                         }
                     }
@@ -196,6 +185,7 @@ namespace Image_CSV_Resizer
         {
             txtCsvFile.Clear();
             txtDestinyFolder.Clear();
+            caminhoDeDestino = null;
 
             lstItemsCsv.Items.Clear();
             lstPhotos.Items.Clear();
@@ -211,7 +201,7 @@ namespace Image_CSV_Resizer
         {
             int DSCstringIndex = caminhoFoto.LastIndexOf("DSC");
             string foto = caminhoFoto.Remove(0, DSCstringIndex);
-            foto = foto.Replace(".JPG", "");
+            foto = foto.Replace(".JPG", "");//Tira o JPG do nome da foto
 
             return foto;
         }
