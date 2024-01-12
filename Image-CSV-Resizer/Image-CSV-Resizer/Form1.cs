@@ -28,7 +28,7 @@ namespace Image_CSV_Resizer
             lstItemsCsv.Columns.Add("Matrícula", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
             lstItemsCsv.Columns.Add("Nº da Foto", lstItemsCsv.Size.Width / 4, HorizontalAlignment.Left);
         }
-        
+
         private void btnPhotos_Click(object sender, EventArgs e)
         {
             lstPhotos.Items.Clear();
@@ -65,7 +65,6 @@ namespace Image_CSV_Resizer
             }
 
         }
-
 
         private void btnCSVRead_Click(object sender, EventArgs e)
         {
@@ -121,9 +120,6 @@ namespace Image_CSV_Resizer
                             "[Nome, Turma, Matrícula, Foto]");
                 MessageBox.Show(erro.ToString());
                 MessageBox.Show(ex.Message);
-
-
-
             }
 
         }
@@ -151,7 +147,7 @@ namespace Image_CSV_Resizer
 
                 try
                 {
-                    
+
                     foreach (var arquivoFoto in caminhoDaFoto)
                     {
                         string nomeDaFoto = ObterNomeDaFoto(arquivoFoto);
@@ -160,7 +156,7 @@ namespace Image_CSV_Resizer
                         {
                             if (arquivoFoto.Contains(dados.GetNumeroDaFoto()))
                             {
-                                string[] linha = {dados.GetTurma(), nomeDaFoto, dados.GetMatricula() };
+                                string[] linha = { dados.GetTurma(), nomeDaFoto, dados.GetMatricula() };
                                 ListViewItem listViewItem = new ListViewItem(linha);
 
                                 classeFotos.SalvarFoto(classeFotos.RedimensionarFoto(arquivoFoto, 300, 400), caminhoDeDestino, dados.GetMatricula(), dados.GetTurma());
@@ -168,6 +164,8 @@ namespace Image_CSV_Resizer
                             }
                         }
                     }
+
+                    MessageBox.Show("Fotos redimensionadas com sucesso");
                 }
                 catch (Exception ex)
                 {
@@ -206,6 +204,11 @@ namespace Image_CSV_Resizer
             return foto;
         }
 
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            classeFotos.ExibirLogDeFotos(listaDadosCsv[0]);
+
+        }
     }
 
     class CsvFileData

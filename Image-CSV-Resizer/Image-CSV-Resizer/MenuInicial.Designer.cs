@@ -28,44 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            button1 = new Button();
+            button2 = new Button();
+            SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 259);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(349, 124);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Redimensionar com arquivo CSV";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.BackColor = Color.Silver;
+            button1.Location = new Point(10, 194);
+            button1.Name = "button1";
+            button1.Size = new Size(305, 93);
+            button1.TabIndex = 0;
+            button1.Text = "Redimensionar com arquivo CSV";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 67);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(349, 124);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Somente Redimensionar";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            button2.BackColor = Color.Silver;
+            button2.Location = new Point(10, 50);
+            button2.Name = "button2";
+            button2.Size = new Size(305, 93);
+            button2.TabIndex = 1;
+            button2.Text = "Somente Redimensionar";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // MenuInicial
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(373, 460);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "MenuInicial";
-            this.Text = "MenuInicial";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(34, 34, 42);
+            ClientSize = new Size(326, 345);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Name = "MenuInicial";
+            Text = "MenuInicial";
+            ResumeLayout(false);
         }
 
         #endregion

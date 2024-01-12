@@ -15,16 +15,13 @@ namespace Image_CSV_Resizer
         Fotos classeFotos = new Fotos();
         List<string> nomeDoArquivoDaFoto = new List<string>();
         List<string> caminhoDaFoto = new List<string>();
+        string pastaDestino;
         int larguraFoto;
         int alturaFoto;
 
         public Form2()
         {
             InitializeComponent();
-
-            //Desabilita edição dos campos altura e largura das fotos no Windows Forms
-            txtHeight.Enabled = false;
-            txtWidth.Enabled = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,11 +31,11 @@ namespace Image_CSV_Resizer
 
             string[] photos = classeFotos.CarregaFotos();
 
-            foreach (var fotos in photos) 
+            foreach (var fotos in photos)
             {
                 lstPhotos.Items.Add(fotos);
                 caminhoDaFoto.Add(fotos);
-                nomeDoArquivoDaFoto.Add(fotos.Remove(0,fotos.LastIndexOf(@"\") + 1));
+                nomeDoArquivoDaFoto.Add(fotos.Remove(0, fotos.LastIndexOf(@"\") + 1));
             }
         }
 
@@ -54,24 +51,25 @@ namespace Image_CSV_Resizer
                 MessageBox.Show("Não foi selecionada nenhuma opção de redimensionamento!!!", "Redimensionamento não definido", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
             else if (lstPhotos.Items.Count == 0)//Verifica se foi selecionada alguma foto
-            {                
+            {
                 MessageBox.Show("Não foi selecionada nenhuma foto!!!", "Nenhuma foto selecionada", MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
             else if (string.IsNullOrEmpty(txtDestinyFolder.Text))// Verifica se foi selecionada a pasta de destino
             {
                 MessageBox.Show("O caminho de destino não foi especificado", "Nenhum caminho de destino", MessageBoxButtons.OK, MessageBoxIcon.Question);
-            } else
+            }
+            else
             {
                 int index = 0;
                 foreach (var arquivos in nomeDoArquivoDaFoto)
                 {
                     Image fotoRedimensionada = classeFotos.RedimensionarFoto(caminhoDaFoto[index], larguraFoto, alturaFoto);
-                    classeFotos.SalvarFoto(fotoRedimensionada, txtDestinyFolder.Text, nomeDoArquivoDaFoto[index]);
-                    classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), txtDestinyFolder.Text);
+                    classeFotos.SalvarFoto(fotoRedimensionada, pastaDestino, nomeDoArquivoDaFoto[index].Replace(".JPG",""));
+                    classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), pastaDestino, nomeDoArquivoDaFoto[index]);
                     index++;
                 }
 
-                MessageBox.Show("Redimensionamento concluído","Mensagem de Conclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Redimensionamento concluído", "Mensagem de Conclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -102,7 +100,7 @@ namespace Image_CSV_Resizer
             lstPhotos.Items.Clear();
             caminhoDaFoto.Clear();
             txtDestinyFolder.Clear();
-            lstFotosRedimensionadas.Clear();
+            pastaDestino = null;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -113,14 +111,13 @@ namespace Image_CSV_Resizer
 
         private void PastaDestino()
         {
-            var pastaDestino = new FolderBrowserDialog();
-            if (pastaDestino.ShowDialog() == DialogResult.OK)
+            var destinyFolder = new FolderBrowserDialog();
+            if (destinyFolder.ShowDialog() == DialogResult.OK)
             {
                 txtDestinyFolder.Clear();
-                txtDestinyFolder.Text = pastaDestino.SelectedPath;
+                txtDestinyFolder.Text = destinyFolder.SelectedPath;
+                pastaDestino = destinyFolder.SelectedPath;
             }
         }
-
-        
     }
 }

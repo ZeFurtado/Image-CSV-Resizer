@@ -155,9 +155,10 @@ namespace Image_CSV_Resizer
             return caminho;
         }
 
-        public void LogDeFotosRedimensionadas(string hora, string caminhoDaFoto)
+        public void LogDeFotosRedimensionadas(string hora, string caminhoDaFoto, string nomeDoArquivo)
         {
-            string mensagem = $"{hora}\n" +
+            string mensagem =  "[Somente redimensionar]\n" +
+                              $"{hora}\n" +
                               $"{caminhoDaFoto}";
 
             string caminho = @$"{Directory.GetCurrentDirectory()}\ResizedPhotosLog.txt";
@@ -170,7 +171,8 @@ namespace Image_CSV_Resizer
 
         public void LogDeFotosRedimensionadas(string hora, string caminhoDaFoto, DadosCsv dados) 
         {
-            string mensagem = $"{dados}\n" +
+            string mensagem =  "[Redimensionar com arquivo CSV]\n" +
+                              $"{dados}\n" +
                               $"Hora: {hora}\n" +
                               $"Salvo inicialmente em: {caminhoDaFoto}";
 
@@ -179,6 +181,13 @@ namespace Image_CSV_Resizer
             {
                 sw.WriteLine(mensagem + "\n");
             }
+        }
+
+        public void ExibirLogDeFotos(DadosCsv dadosCsv) 
+        {
+
+           
+
         }
 
     }
