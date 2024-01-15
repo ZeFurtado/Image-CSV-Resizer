@@ -183,10 +183,21 @@ namespace Image_CSV_Resizer
             }
         }
 
-        public void ExibirLogDeFotos(DadosCsv dadosCsv) 
+        public string ExibirLogDeFotos() 
         {
+            StringBuilder stringBuilder = new StringBuilder();
+            string caminho = @$"{Directory.GetCurrentDirectory()}\ResizedPhotosLog.txt";
+            using (StreamReader sr = new StreamReader(caminho)) 
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null) 
+                {
+                    stringBuilder.Append(line +"\n");
 
-           
+                    
+                }
+            }
+                return stringBuilder.ToString();
 
         }
 

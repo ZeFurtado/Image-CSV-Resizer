@@ -206,8 +206,9 @@ namespace Image_CSV_Resizer
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            classeFotos.ExibirLogDeFotos(listaDadosCsv[0]);
+            ExibeLogs exibeLogs = new ExibeLogs();
 
+            exibeLogs.Show();
         }
     }
 
