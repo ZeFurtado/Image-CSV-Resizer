@@ -30,6 +30,7 @@
         {
             button1 = new Button();
             button2 = new Button();
+            linkLabel1 = new LinkLabel();
             SuspendLayout();
             // 
             // button1
@@ -54,22 +55,36 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(107, 321);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(103, 15);
+            linkLabel1.TabIndex = 20;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Histórico de Fotos";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // MenuInicial
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(34, 34, 42);
             ClientSize = new Size(326, 345);
+            Controls.Add(linkLabel1);
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "MenuInicial";
             Text = "MenuInicial";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button button1;
         private Button button2;
+        private LinkLabel linkLabel1;
     }
 }

@@ -17,6 +17,9 @@ namespace Image_CSV_Resizer
         public Form1()
         {
             InitializeComponent();
+            FormStartPosition formStartPosition = new FormStartPosition();
+            StartPosition = formStartPosition;
+
         }
         void ConfiguracaoListViewCSV() //Configuração da tabela dos dados CSV
         {
@@ -206,9 +209,9 @@ namespace Image_CSV_Resizer
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ExibeLogs exibeLogs = new ExibeLogs();
+            MenuInicial menuInicial = new MenuInicial();
 
-            exibeLogs.Show();
+            menuInicial.Show();
         }
     }
 

@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            richTextBox1 = new RichTextBox();
             SuspendLayout();
             // 
-            // textBox1
+            // richTextBox1
             // 
-            textBox1.BackColor = Color.Gray;
-            textBox1.Location = new Point(12, 12);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(776, 639);
-            textBox1.TabIndex = 0;
+            richTextBox1.BackColor = Color.Gainsboro;
+            richTextBox1.Location = new Point(12, 12);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(776, 639);
+            richTextBox1.TabIndex = 1;
+            richTextBox1.Text = "";
             // 
             // ExibeLogs
             // 
@@ -46,15 +46,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(34, 34, 42);
             ClientSize = new Size(800, 663);
-            Controls.Add(textBox1);
+            Controls.Add(richTextBox1);
             Name = "ExibeLogs";
             Text = "ExibeLogs";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox textBox1;
+        private RichTextBox richTextBox1;
     }
 }

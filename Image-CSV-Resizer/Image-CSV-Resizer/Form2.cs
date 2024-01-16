@@ -22,6 +22,9 @@ namespace Image_CSV_Resizer
         public Form2()
         {
             InitializeComponent();
+
+            FormStartPosition formStartPosition = new FormStartPosition();
+            StartPosition = formStartPosition;
         }
 
         private void button1_Click(object sender, EventArgs e)

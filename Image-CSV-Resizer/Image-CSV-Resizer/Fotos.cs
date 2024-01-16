@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using ExifLib;
 using System.Drawing.Imaging;
+using System.Diagnostics;
 
 namespace Image_CSV_Resizer
 {
@@ -183,22 +184,18 @@ namespace Image_CSV_Resizer
             }
         }
 
-        public string ExibirLogDeFotos() 
+        public void ExibirLogDeFotos() 
         {
-            StringBuilder stringBuilder = new StringBuilder();
             string caminho = @$"{Directory.GetCurrentDirectory()}\ResizedPhotosLog.txt";
-            using (StreamReader sr = new StreamReader(caminho)) 
+
+            try
             {
-                string line;
-                while ((line = sr.ReadLine()) != null) 
-                {
-                    stringBuilder.Append(line +"\n");
-
-                    
-                }
+                File.Open(caminho, FileMode.Open);
             }
-                return stringBuilder.ToString();
-
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
     }

@@ -17,16 +17,32 @@ namespace Image_CSV_Resizer
         public MenuInicial()
         {
             InitializeComponent();
+
+            FormStartPosition formStartPosition = new FormStartPosition();
+            StartPosition = formStartPosition;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            form1.ShowDialog();
+            
+            form1.Show();
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
             form2.ShowDialog();
+            
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ExibeLogs exibeLogs = new ExibeLogs();
+
+            exibeLogs.Show();
+
         }
     }
 }

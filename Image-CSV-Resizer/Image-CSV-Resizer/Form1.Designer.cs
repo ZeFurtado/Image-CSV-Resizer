@@ -145,7 +145,7 @@
             // 
             btnResize.Font = new Font("Segoe UI Emoji", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
             btnResize.ForeColor = Color.Black;
-            btnResize.Location = new Point(175, 536);
+            btnResize.Location = new Point(176, 536);
             btnResize.Name = "btnResize";
             btnResize.Size = new Size(211, 77);
             btnResize.TabIndex = 12;
@@ -206,12 +206,14 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(460, 630);
+            linkLabel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            linkLabel1.LinkColor = Color.Silver;
+            linkLabel1.Location = new Point(13, 624);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(103, 15);
+            linkLabel1.Size = new Size(62, 21);
             linkLabel1.TabIndex = 19;
             linkLabel1.TabStop = true;
-            linkLabel1.Text = "Histórico de Fotos";
+            linkLabel1.Text = "<Voltar";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // Form1
