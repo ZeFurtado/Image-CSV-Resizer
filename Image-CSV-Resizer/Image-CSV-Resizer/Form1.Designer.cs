@@ -43,7 +43,6 @@
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
-            linkLabel1 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -203,26 +202,12 @@
             pictureBox3.TabIndex = 18;
             pictureBox3.TabStop = false;
             // 
-            // linkLabel1
-            // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            linkLabel1.LinkColor = Color.Silver;
-            linkLabel1.Location = new Point(13, 624);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(62, 21);
-            linkLabel1.TabIndex = 19;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "<Voltar";
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(34, 34, 42);
             ClientSize = new Size(576, 661);
-            Controls.Add(linkLabel1);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
@@ -265,6 +250,5 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
-        private LinkLabel linkLabel1;
     }
 }

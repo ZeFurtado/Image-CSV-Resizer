@@ -17,9 +17,8 @@ namespace Image_CSV_Resizer
         public Form1()
         {
             InitializeComponent();
-            FormStartPosition formStartPosition = new FormStartPosition();
-            StartPosition = formStartPosition;
 
+            StartPosition = FormStartPosition.CenterScreen;
         }
         void ConfiguracaoListViewCSV() //Configuração da tabela dos dados CSV
         {
@@ -89,6 +88,7 @@ namespace Image_CSV_Resizer
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
                     lstItemsCsv.Items.Clear();
+                    listaDadosCsv.Clear();
 
                     ConfiguracaoListViewCSV();
 
@@ -187,6 +187,7 @@ namespace Image_CSV_Resizer
             txtCsvFile.Clear();
             txtDestinyFolder.Clear();
             caminhoDeDestino = null;
+            listaDadosCsv.Clear();
 
             lstItemsCsv.Items.Clear();
             lstPhotos.Items.Clear();
@@ -207,12 +208,6 @@ namespace Image_CSV_Resizer
             return foto;
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            MenuInicial menuInicial = new MenuInicial();
-
-            menuInicial.Show();
-        }
     }
 
     class CsvFileData

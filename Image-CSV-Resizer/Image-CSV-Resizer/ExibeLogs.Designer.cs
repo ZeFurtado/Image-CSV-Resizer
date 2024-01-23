@@ -39,6 +39,7 @@
             richTextBox1.Size = new Size(776, 639);
             richTextBox1.TabIndex = 1;
             richTextBox1.Text = "";
+            StartPosition = FormStartPosition.CenterScreen;
             // 
             // ExibeLogs
             // 
@@ -50,6 +51,7 @@
             Name = "ExibeLogs";
             Text = "ExibeLogs";
             ResumeLayout(false);
+            
         }
 
         #endregion

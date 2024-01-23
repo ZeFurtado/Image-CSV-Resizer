@@ -23,8 +23,7 @@ namespace Image_CSV_Resizer
         {
             InitializeComponent();
 
-            FormStartPosition formStartPosition = new FormStartPosition();
-            StartPosition = formStartPosition;
+            StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -19,9 +19,6 @@ namespace Image_CSV_Resizer
         {
             InitializeComponent();
 
-            FormStartPosition formStartPosition = new FormStartPosition();
-            StartPosition = formStartPosition;
-
             ExibirLogDeFotos();
         }
 
