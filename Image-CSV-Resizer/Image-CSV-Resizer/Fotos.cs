@@ -51,6 +51,7 @@ namespace Image_CSV_Resizer
                 Image fotoOriginal = Image.FromFile(caminhoDoArquivo);
                 Image fotoRedimensionada;
 
+                //Primeiro é verificado qual a orientação da foto
                 if (PropriedadesExif(caminhoDoArquivo) == 6) //O número 6 representa á rotação tirada por alguém canhoto
                 {
                     fotoOriginal.RotateFlip(RotateFlipType.Rotate90FlipNone);  
@@ -60,6 +61,7 @@ namespace Image_CSV_Resizer
                     fotoOriginal.RotateFlip(RotateFlipType.Rotate90FlipXY);
                 }
 
+                //Em seguida será verficado qual o tamanho dela para ser mantida a proporção
                 if (altura == 768 && largura == 663)
                 {
                     Bitmap fotoCortada = new Bitmap(fotoOriginal, largura, 884); //Ele primeiro redimensionada a foto com Altura de 884 para manter a proporção.
