@@ -34,6 +34,7 @@ namespace Image_CSV_Resizer
         private void btnPhotos_Click(object sender, EventArgs e)
         {
             lstPhotos.Items.Clear();
+            caminhoDaFoto.Clear();
             string[] photos = classeFotos.CarregaFotos();
 
             foreach (var fotos in photos)
