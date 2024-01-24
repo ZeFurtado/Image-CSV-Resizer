@@ -9,6 +9,8 @@ namespace Image_CSV_Resizer
     {
         private StringBuilder mensagemDeErro = new StringBuilder();
 
+        //Função carrega fotos retorna um array de string com o caminho do arquivo das fotos
+        //O mesmo que é exibido no formulário é o que é carregado no array.
         public string[] CarregaFotos() 
         {
             string[] fotos = {""};
