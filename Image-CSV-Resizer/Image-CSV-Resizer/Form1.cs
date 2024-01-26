@@ -148,28 +148,29 @@ namespace Image_CSV_Resizer
             }
             else
             {
-
                 try
                 {
-
                     foreach (var arquivoFoto in caminhoDaFoto)
                     {
                         string nomeDaFoto = ObterNomeDaFoto(arquivoFoto);
-
+           
                         foreach (var dados in listaDadosCsv)
                         {
-                            if (arquivoFoto.Contains(dados.GetNumeroDaFoto()))
+                            if (nomeDaFoto == dados.GetNumeroDaFoto())
                             {
                                 string[] linha = { dados.GetTurma(), nomeDaFoto, dados.GetMatricula() };
                                 ListViewItem listViewItem = new ListViewItem(linha);
 
                                 classeFotos.SalvarFoto(classeFotos.RedimensionarFoto(arquivoFoto, 300, 400), caminhoDeDestino, dados.GetMatricula(), dados.GetTurma());
-                                classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), @$"{caminhoDeDestino}\{dados.GetTurma()}", dados);
+                                classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), @$"{caminhoDeDestino}\{dados.GetTurma()}", dados);   
+                            }
+                            else 
+                            {
+                                
                             }
                         }
                     }
 
-                    MessageBox.Show("Fotos redimensionadas com sucesso");
                 }
                 catch (Exception ex)
                 {
@@ -202,11 +203,23 @@ namespace Image_CSV_Resizer
         //Criei essa função para tirar o caminho inteiro da foto e deixar somente o nome do Arquivo.
         string ObterNomeDaFoto(string caminhoFoto)
         {
-            int DSCstringIndex = caminhoFoto.LastIndexOf("DSC");
-            string foto = caminhoFoto.Remove(0, DSCstringIndex);
-            foto = foto.Replace(".JPG", "");//Tira o JPG do nome da foto
+            int DSCstringIndex = caminhoFoto.LastIndexOf("DSC");//Obtém a localização do DSC
+            string foto = caminhoFoto.Remove(0, DSCstringIndex);//Remove tudo antes do DSC
+            StringBuilder sb = new StringBuilder();//StringBuilder para armazenar os números da string foto
 
-            return foto;
+            foreach (var c in foto) 
+            {
+                string l = c.ToString(); //Transforma a var 'c' em string para que possa chamar a função "IsDigit"
+
+                if (l.All(char.IsDigit)) //Verifica se a string é um número e carrega ela para o Stringbuilder
+                {
+                    sb.Append(l);
+                } 
+            }
+
+            foto = sb.ToString();//Converter o StrinBuilder para string para ser armazenado na variável fotos
+            
+            return foto;//Retorna a string com o número da foto
         }
 
     }

@@ -24,9 +24,7 @@ namespace Image_CSV_Resizer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            form1.Show();
-           
+            form1.Show();  
         }
 
         private void button2_Click(object sender, EventArgs e)
