@@ -12,26 +12,23 @@ namespace Image_CSV_Resizer
 {
     public partial class MenuInicial : Form
     {
-        Form form1 = new Form1();
-        Form form2 = new Form2();
         public MenuInicial()
         {
             InitializeComponent();
 
             StartPosition = FormStartPosition.CenterScreen;
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Form1 form1 = new Form1();
             form1.Show();  
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            Form2 form2 = new Form2();
             form2.ShowDialog();
-            
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -39,7 +36,6 @@ namespace Image_CSV_Resizer
             ExibeLogs exibeLogs = new ExibeLogs();
 
             exibeLogs.Show();
-
         }
     }
 }
