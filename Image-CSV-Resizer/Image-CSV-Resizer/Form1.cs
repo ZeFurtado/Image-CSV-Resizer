@@ -148,12 +148,14 @@ namespace Image_CSV_Resizer
             }
             else
             {
+                int numeroDeFotosTotal = 0;
+                int numeroDeFotosRedimensionadas = 0;
                 try
                 {
                     foreach (var arquivoFoto in caminhoDaFoto)
                     {
                         string nomeDaFoto = ObterNomeDaFoto(arquivoFoto);
-           
+                        numeroDeFotosTotal++;
                         foreach (var dados in listaDadosCsv)
                         {
                             if (nomeDaFoto == dados.GetNumeroDaFoto())
@@ -162,11 +164,12 @@ namespace Image_CSV_Resizer
                                 ListViewItem listViewItem = new ListViewItem(linha);
 
                                 classeFotos.SalvarFoto(classeFotos.RedimensionarFoto(arquivoFoto, 300, 400), caminhoDeDestino, dados.GetMatricula(), dados.GetTurma());
-                                classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), @$"{caminhoDeDestino}\{dados.GetTurma()}", dados);   
+                                classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), @$"{caminhoDeDestino}\{dados.GetTurma()}", dados);
+                                numeroDeFotosRedimensionadas++;
                             }
                             else 
                             {
-                                
+                               
                             }
                         }
                     }
