@@ -83,7 +83,6 @@ namespace Image_CSV_Resizer
                 openFile.Title = "Selecione o arquivo CSV";
                 openFile.InitialDirectory = @$"C:\Users\{classeFotos.ObterNomeDoUser()}\documents";
 
-
                 txtCsvFile.Enabled = false;
 
                 if (openFile.ShowDialog() == DialogResult.OK)
@@ -167,17 +166,22 @@ namespace Image_CSV_Resizer
                                 classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), @$"{caminhoDeDestino}\{dados.GetTurma()}", dados);
                                 numeroDeFotosRedimensionadas++;
                             }
-                            else 
-                            {
-                               
-                            }
                         }
                     }
 
 
-                    if (numeroDeFotosTotal != numeroDeFotosRedimensionadas) 
+                    if (numeroDeFotosRedimensionadas == 0)
                     {
-                        MessageBox.Show("Algumas fotos não foram redimensionadas");
+                        
+                        MessageBox.Show("Nenhuma foto foi redimensionada", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                    } else if (numeroDeFotosRedimensionadas < numeroDeFotosTotal)
+                    {
+                        MessageBox.Show("Algumas fotos não foram redimensionadas", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if(numeroDeFotosRedimensionadas == numeroDeFotosTotal)
+                    {
+                        MessageBox.Show("Todas as fotos foram redimensionadas", "", MessageBoxButtons.OK);
                     }
 
                 }
@@ -202,7 +206,6 @@ namespace Image_CSV_Resizer
 
             lstItemsCsv.Items.Clear();
             lstPhotos.Items.Clear();
-
 
             listaDadosCsv.Clear();
             caminhoDaFoto.Clear();
