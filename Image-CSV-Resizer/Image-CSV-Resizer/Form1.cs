@@ -174,6 +174,12 @@ namespace Image_CSV_Resizer
                         }
                     }
 
+
+                    if (numeroDeFotosTotal != numeroDeFotosRedimensionadas) 
+                    {
+                        MessageBox.Show("Algumas fotos não foram redimensionadas");
+                    }
+
                 }
                 catch (Exception ex)
                 {
