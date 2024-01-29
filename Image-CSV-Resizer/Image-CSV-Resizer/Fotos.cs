@@ -140,7 +140,7 @@ namespace Image_CSV_Resizer
 
                 } else if (Directory.Exists(caminhoPastaTurma)) //Se a pasta existe é perguntado ao usuário se ele quer salvar nela mesmo.
                 {
-                    DialogResult dialogResult = MessageBox.Show("Já existe um diretório com o nome da turma, salvar ele no mesmo diretório?", "Pasta Turma já criada", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("Já existe um diretório com o nome da turma, salvar ele no mesmo diretório?", "Pasta Turma já criada", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)//Se SIM ele salvará na pasta.
                     {
                         fotoRedimensionada.Save($@"{caminhoPastaTurma}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
