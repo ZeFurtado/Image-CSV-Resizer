@@ -21,14 +21,32 @@ namespace Image_CSV_Resizer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            form1.Show();  
+
+            if (Application.OpenForms.OfType<Form1>().Count() > 0)
+            {
+                MessageBox.Show("O formulário já possui uma instância aberta", "Formulário já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else 
+            {
+                Form1 form1 = new Form1();
+                form1.Show();
+            }
+              
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
-            form2.ShowDialog();
+
+            if (Application.OpenForms.OfType<Form2>().Count() > 0)
+            {
+                MessageBox.Show("O formulário já possui uma instância aberta", "Formulário já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                Form2 form2 = new Form2();
+                form2.Show();
+            }
+            
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
