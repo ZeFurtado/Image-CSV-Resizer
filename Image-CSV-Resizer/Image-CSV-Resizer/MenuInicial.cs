@@ -17,6 +17,7 @@ namespace Image_CSV_Resizer
             InitializeComponent();
 
             StartPosition = FormStartPosition.CenterScreen;
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,9 +52,18 @@ namespace Image_CSV_Resizer
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            ExibeLogs exibeLogs = new ExibeLogs();
 
-            exibeLogs.Show();
+            if (Application.OpenForms.OfType<ExibeLogs>().Count() > 0)
+            {
+                MessageBox.Show("Esta janela já possuí uma instância aberta", "Formulário já está aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else 
+            {
+                ExibeLogs exibeLogs = new ExibeLogs();
+
+                exibeLogs.Show();
+            }
+            
         }
     }
 }
