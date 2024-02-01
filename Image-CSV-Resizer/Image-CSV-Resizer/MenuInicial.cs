@@ -25,7 +25,7 @@ namespace Image_CSV_Resizer
 
             if (Application.OpenForms.OfType<Form1>().Count() > 0)
             {
-                MessageBox.Show("O formulário já possui uma instância aberta", "Formulário já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Esta janela já possui uma instância aberta", "Formulário já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else 
             {
@@ -40,7 +40,7 @@ namespace Image_CSV_Resizer
 
             if (Application.OpenForms.OfType<Form2>().Count() > 0)
             {
-                MessageBox.Show("O formulário já possui uma instância aberta", "Formulário já aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Está janela já possui uma instância aberta", "Formulário já está aberto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
