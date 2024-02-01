@@ -168,6 +168,7 @@ namespace Image_CSV_Resizer
             return caminho;
         }
 
+        //Função para inserir dados das fotos redimensionadas pelo "Somente redimensionar"
         public void LogDeFotosRedimensionadas(string hora, string caminhoDaFoto, string nomeDoArquivo)
         {
             string mensagem =  "[Somente redimensionar]\n" +
@@ -182,6 +183,7 @@ namespace Image_CSV_Resizer
 
         }
 
+        //Sobrecarga da função para inserir os dados das fotos redimensionadas pelo "Redimensionar com arquivo CSV"
         public void LogDeFotosRedimensionadas(string hora, string caminhoDaFoto, DadosCsv dados) 
         {
             string mensagem =  "[Redimensionar com arquivo CSV]\n" +
@@ -196,6 +198,7 @@ namespace Image_CSV_Resizer
             }
         }
 
+        //Função que carrega o arquivo TXT das fotos redimensionadas.
         public void ExibirLogDeFotos() 
         {
             string caminho = @$"{Directory.GetCurrentDirectory()}\ResizedPhotosLog.txt";
