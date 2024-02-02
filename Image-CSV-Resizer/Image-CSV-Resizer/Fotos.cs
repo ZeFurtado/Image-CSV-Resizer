@@ -38,6 +38,7 @@ namespace Image_CSV_Resizer
                 mensagemDeErro.Append($"Não foi possível abrir o arquivo {openPhotos.FileNames}");
                 mensagemDeErro.Append(ex.Message);
                 MessageBox.Show(mensagemDeErro.ToString());
+                LogDeErros(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), ex.Message, ex.Source, "CarregaFotos() em Fotos.cs");
                 return fotos;
             }
         }
@@ -78,6 +79,7 @@ namespace Image_CSV_Resizer
             {
                 Image erro = new Bitmap(1, 1);
                 MessageBox.Show(ex.Message);
+                LogDeErros(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), ex.Message, ex.Source, "RedimensionarFoto() em Fotos.cs");
                 return erro;
             }
 
@@ -103,6 +105,7 @@ namespace Image_CSV_Resizer
             catch(Exception ex) 
             {
                 MessageBox.Show(ex.Message);
+                LogDeErros(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), ex.Message, ex.Source, "PropriedadesExif() em Fotos.cs");
             }
 
             return retorno; 
@@ -120,6 +123,8 @@ namespace Image_CSV_Resizer
                 mensagemDeErro.Append($"Não foi possível salvar o arquivo {nomeDoArquivo}");
                 mensagemDeErro.Append(ex.Message);
                 MessageBox.Show(mensagemDeErro.ToString());
+                LogDeErros(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), ex.Message, ex.Source, "SalvarFoto(3 args) em Fotos.cs");
+
             }           
         }
 
@@ -155,6 +160,7 @@ namespace Image_CSV_Resizer
             catch (Exception ex) 
             {
                 MessageBox.Show(ex.Message);
+                LogDeErros(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), ex.Message, ex.Source, "SalvarFoto(4 args) em Fotos.cs");
             }
         }
 
@@ -209,7 +215,22 @@ namespace Image_CSV_Resizer
             }
             catch (Exception ex) 
             {
-                MessageBox.Show(ex.Message);
+                throw ex;
+            }
+        }
+        
+        //Função criada para armazenar os erros para possíveis soluções
+        public void LogDeErros(string hora, string mensagemDeErro, string fonteDoProblema, string nomeDaFuncao) 
+        {
+            string mensagem = $"Mensgagem de erro: {mensagemDeErro}\n" +
+                              $"Nome da Função: {nomeDaFuncao}\n"+
+                              $"Fonte do problema: {fonteDoProblema}\n" +
+                              $"Hora: {hora}";
+
+            string caminho = @$"{Directory.GetCurrentDirectory()}\ErrorLog.txt";
+            using (StreamWriter sw = File.AppendText(caminho)) 
+            {
+                sw.WriteLine(mensagem + "\n");
             }
         }
 
