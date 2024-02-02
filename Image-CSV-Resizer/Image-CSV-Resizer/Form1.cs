@@ -65,6 +65,7 @@ namespace Image_CSV_Resizer
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                classeFotos.LogDeErros(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), ex.Message, ex.Source, "PastaDestino() em Form1.cs");
             }
 
         }
@@ -123,6 +124,7 @@ namespace Image_CSV_Resizer
                             "[Nome, Turma, Matrícula, Foto]");
                 MessageBox.Show(erro.ToString());
                 MessageBox.Show(ex.Message);
+                classeFotos.LogDeErros(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), ex.Message, ex.Source, "DadosCsv() em Form1.cs");
             }
 
         }
@@ -188,6 +190,7 @@ namespace Image_CSV_Resizer
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    classeFotos.LogDeErros(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), ex.Message, ex.Source, "Redimensionar() em Form1.cs");
                 }
             }
         }
