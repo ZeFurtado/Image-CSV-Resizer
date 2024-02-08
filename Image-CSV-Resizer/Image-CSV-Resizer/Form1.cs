@@ -215,7 +215,7 @@ namespace Image_CSV_Resizer
         }
 
 
-        //Criei essa função para tirar o caminho inteiro da foto e deixar somente o nome do Arquivo.
+        //Criei essa função para tirar o caminho inteiro da foto e deixar somente o nome do Arquivo da foto.
         string ObterNomeDaFoto(string caminhoFoto)
         {
             int DSCstringIndex = caminhoFoto.LastIndexOf("DSC");//Obtém a localização do DSC
