@@ -63,9 +63,9 @@ namespace Image_CSV_Resizer
                 {
                     return openPhotos.FileNames;
                 }
-                else 
+                else //Caso a operação seja cancelada é retornado um array com o conteúdo da lista para que o List View do form continue preenchido
                 {
-                    return caminhoDaFoto.ToArray();
+                    return caminhoDaFoto.ToArray(); 
                 }
             }
             catch(Exception ex) 
