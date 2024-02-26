@@ -45,6 +45,40 @@ namespace Image_CSV_Resizer
         }
 
 
+        public string[] CarregaFotos(List <string> caminhoDaFoto) 
+        {
+
+            string[] fotos = { "" };
+
+            var openPhotos = new OpenFileDialog();
+            openPhotos.Filter = "Somente Fotos (*.PNG; *.JPG)| *.PNG; *.JPG";
+            openPhotos.FilterIndex = 1;
+            openPhotos.Multiselect = true;
+            openPhotos.Title = "Selecione a(s) foto(s)";
+            openPhotos.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\Desktop";
+
+            try
+            {
+                if (openPhotos.ShowDialog() == DialogResult.OK)
+                {
+                    return openPhotos.FileNames;
+                }
+                else 
+                {
+                    return caminhoDaFoto.ToArray();
+                }
+            }
+            catch(Exception ex) 
+            {
+                mensagemDeErro.Append($"Não foi possível abrir o arquivo {openPhotos.FileNames}");
+                mensagemDeErro.Append(ex.Message);
+                MessageBox.Show(mensagemDeErro.ToString());
+                LogDeErros(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), ex.Message, ex.Source, "CarregaFotos(1 arg) em Fotos.cs");
+                return fotos;
+            }
+        }
+
+
         
         public Image RedimensionarFoto(string caminhoDoArquivo, int largura, int altura) 
         {
