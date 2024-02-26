@@ -28,6 +28,7 @@ namespace Image_CSV_Resizer
 
         private void button1_Click(object sender, EventArgs e)
         {
+            lstPhotos.Items.Clear();
             nomeDoArquivoDaFoto.Clear();
             caminhoDaFoto.Clear();
 
@@ -63,23 +64,40 @@ namespace Image_CSV_Resizer
             else
             {
                 int index = 0;
+                int numeroDeFotosTotal = 0;
+                int numeroDeFotosRedimensionadas = 0;
+
                 foreach (var arquivos in nomeDoArquivoDaFoto)
                 {
                     Image fotoRedimensionada = classeFotos.RedimensionarFoto(caminhoDaFoto[index], larguraFoto, alturaFoto);
-
+                    numeroDeFotosTotal++;
                     if (nomeDoArquivoDaFoto[index].Contains(".JPG")) 
                     {
                         classeFotos.SalvarFoto(fotoRedimensionada, pastaDestino, nomeDoArquivoDaFoto[index].Replace(".JPG", ""));
+                        numeroDeFotosRedimensionadas++;
                     }else if (nomeDoArquivoDaFoto[index].Contains(".PNG")) 
                     {
                         classeFotos.SalvarFoto(fotoRedimensionada, pastaDestino, nomeDoArquivoDaFoto[index].Replace(".PNG", ""));
+                        numeroDeFotosRedimensionadas++;
                     }
 
                     classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), pastaDestino, nomeDoArquivoDaFoto[index]);
                     index++;
                 }
 
-                MessageBox.Show("Redimensionamento concluído", "Mensagem de Conclusão", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (numeroDeFotosRedimensionadas == 0)
+                {
+                    MessageBox.Show("Nenhuma foto foi redimensionada", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else if (numeroDeFotosRedimensionadas < numeroDeFotosTotal)
+                {
+                    MessageBox.Show("Algumas fotos não foram redimensionadas", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (numeroDeFotosRedimensionadas == numeroDeFotosTotal)
+                {
+                    MessageBox.Show("Todas as fotos foram redimensionadas", "", MessageBoxButtons.OK);
+                }
+       
             }
         }
 

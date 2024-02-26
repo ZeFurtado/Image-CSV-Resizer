@@ -231,7 +231,7 @@ namespace Image_CSV_Resizer
                 } 
             }
 
-            foto = sb.ToString();//Converter o StrinBuilder para string para ser armazenado na variável fotos
+            foto = sb.ToString();//Converter o StringBuilder para string para ser armazenado na variável fotos
             
             return foto;//Retorna a string com o número da foto
         }
