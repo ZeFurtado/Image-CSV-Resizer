@@ -28,18 +28,39 @@ namespace Image_CSV_Resizer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            lstPhotos.Items.Clear();
-            nomeDoArquivoDaFoto.Clear();
-            caminhoDaFoto.Clear();
 
-            string[] photos = classeFotos.CarregaFotos();
-
-            foreach (var fotos in photos)
+            if (caminhoDaFoto == null)
             {
-                lstPhotos.Items.Add(fotos);
-                caminhoDaFoto.Add(fotos);
-                nomeDoArquivoDaFoto.Add(fotos.Remove(0, fotos.LastIndexOf(@"\") + 1));
+                string[] photos = classeFotos.CarregaFotos();
+
+                lstPhotos.Items.Clear();
+                nomeDoArquivoDaFoto.Clear();
+                caminhoDaFoto.Clear();
+
+                foreach (var fotos in photos)
+                {
+                    lstPhotos.Items.Add(fotos);
+                    caminhoDaFoto.Add(fotos);
+                    nomeDoArquivoDaFoto.Add(fotos.Remove(0, fotos.LastIndexOf(@"\") + 1));
+                }
+
             }
+            else 
+            {
+                string[] photos = classeFotos.CarregaFotos(caminhoDaFoto);
+
+                lstPhotos.Items.Clear();
+                nomeDoArquivoDaFoto.Clear();
+                caminhoDaFoto.Clear();
+
+                foreach (var fotos in photos)
+                {
+                    lstPhotos.Items.Add(fotos);
+                    caminhoDaFoto.Add(fotos);
+                    nomeDoArquivoDaFoto.Add(fotos.Remove(0, fotos.LastIndexOf(@"\") + 1));
+                }
+            }
+
         }
 
         private void button4_Click(object sender, EventArgs e)
