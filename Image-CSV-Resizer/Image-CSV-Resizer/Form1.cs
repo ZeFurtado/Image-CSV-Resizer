@@ -175,7 +175,8 @@ namespace Image_CSV_Resizer
                     if (numeroDeFotosRedimensionadas == 0)
                     {                   
                         MessageBox.Show("Nenhuma foto foi redimensionada", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    } else if (numeroDeFotosRedimensionadas < numeroDeFotosTotal)
+                    } 
+                    else if (numeroDeFotosRedimensionadas < numeroDeFotosTotal)
                     {
                         MessageBox.Show("Algumas fotos não foram redimensionadas", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
