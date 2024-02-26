@@ -28,8 +28,8 @@ namespace Image_CSV_Resizer
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if (caminhoDaFoto == null)
+            //Função lógica para caso a List<string> caminhoDaFoto estiver vazia ele chamará a função Fotos.CarregaFotos() sem a sobrecarga 
+            if (caminhoDaFoto == null) 
             {
                 string[] photos = classeFotos.CarregaFotos();
 
