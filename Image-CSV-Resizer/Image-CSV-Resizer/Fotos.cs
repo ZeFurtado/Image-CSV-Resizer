@@ -16,7 +16,8 @@ namespace Image_CSV_Resizer
             string[] fotos = {""};
 
             var openPhotos = new OpenFileDialog();
-            openPhotos.Filter = "Somente fotos .jpg | * .jpg";
+            openPhotos.Filter = "Somente Fotos (*.PNG; *.JPG)| *.PNG; *.JPG";
+            openPhotos.FilterIndex = 1;
             openPhotos.Multiselect = true;
             openPhotos.Title = "Selecione a(s) foto(s)";
             openPhotos.InitialDirectory = @$"C:\Users\{ObterNomeDoUser()}\Desktop";
@@ -138,23 +139,15 @@ namespace Image_CSV_Resizer
                 if (caminhoDestino.Contains(turma)) //Sé o camimho de destino já for uma pasta com o nome da turma o programa só salva ela
                 { 
                     fotoRedimensionada.Save(@$"{caminhoDestino}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);  
+
                 } else if (!Directory.Exists(caminhoPastaTurma)) //Verifica se o diretório NÃO existe e cria ele.
                 {
                     Directory.CreateDirectory(caminhoPastaTurma);
                     fotoRedimensionada.Save($@"{caminhoPastaTurma}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
 
-                } else if (Directory.Exists(caminhoPastaTurma)) //Se a pasta existe é perguntado ao usuário se ele quer salvar nela mesmo.
+                } else if (Directory.Exists(caminhoPastaTurma))
                 {
-                    DialogResult dialogResult = MessageBox.Show($"Já existe um diretório com o nome da turma [{turma}], salvar ele no mesmo diretório?", "Pasta Turma já criada", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)//Se SIM ele salvará na pasta.
-                    {
-                        fotoRedimensionada.Save($@"{caminhoPastaTurma}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
-                    }
-                    else if (dialogResult == DialogResult.No)//Se NÃO ele salvará na pasta de destino mesmo.
-                    {
-                        fotoRedimensionada.Save($@"{caminhoDestino}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
-                    }
-                    
+                    fotoRedimensionada.Save($@"{caminhoPastaTurma}\{nomeDoArquivo}.JPG", ImageFormat.Jpeg);
                 }
             }
             catch (Exception ex) 
