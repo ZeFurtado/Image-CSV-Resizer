@@ -66,7 +66,15 @@ namespace Image_CSV_Resizer
                 foreach (var arquivos in nomeDoArquivoDaFoto)
                 {
                     Image fotoRedimensionada = classeFotos.RedimensionarFoto(caminhoDaFoto[index], larguraFoto, alturaFoto);
-                    classeFotos.SalvarFoto(fotoRedimensionada, pastaDestino, nomeDoArquivoDaFoto[index].Replace(".JPG",""));
+
+                    if (nomeDoArquivoDaFoto[index].Contains(".JPG")) 
+                    {
+                        classeFotos.SalvarFoto(fotoRedimensionada, pastaDestino, nomeDoArquivoDaFoto[index].Replace(".JPG", ""));
+                    }else if (nomeDoArquivoDaFoto[index].Contains(".PNG")) 
+                    {
+                        classeFotos.SalvarFoto(fotoRedimensionada, pastaDestino, nomeDoArquivoDaFoto[index].Replace(".PNG", ""));
+                    }
+
                     classeFotos.LogDeFotosRedimensionadas(DateTime.Now.ToString("MMM ddd d HH:mm yyyy"), pastaDestino, nomeDoArquivoDaFoto[index]);
                     index++;
                 }
