@@ -56,13 +56,6 @@
             this.numeroDaFoto = numeroDaFoto;
         }
 
-
-
-        public void CsvFileRead(string filePath) 
-        {
-
-        }
-
         public override string ToString()
         {
             string content = $"Turma: {turma}\n" +
