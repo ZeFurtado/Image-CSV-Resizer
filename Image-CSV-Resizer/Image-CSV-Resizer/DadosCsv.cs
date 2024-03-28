@@ -1,4 +1,7 @@
-﻿namespace Image_CSV_Resizer
+﻿using CsvHelper.Configuration.Attributes;
+using static System.Net.WebRequestMethods;
+
+namespace Image_CSV_Resizer
 {
     //Classe criada para extrair os dados do arquivo CSV
     public class DadosCsv
@@ -10,10 +13,10 @@
 
         public DadosCsv(string turma, string nome, string matricula, string numeroDaFoto) 
         {
-            this.turma = turma;
-            this.nome = nome;
-            this.matricula = matricula;
-            this.numeroDaFoto = numeroDaFoto;
+            this.turma = RemoveEspaco(turma);
+            this.nome = RemoveEspaco(nome);
+            this.matricula = RemoveEspaco(matricula);
+            this.numeroDaFoto = RemoveEspaco(numeroDaFoto);
         }
 
         public string GetTurma() 
@@ -58,13 +61,28 @@
 
         public override string ToString()
         {
-            string content = $"Turma: {turma}\n" +
-                             $"Nome: {nome}\n" +
-                             $"Matrícula: {matricula}\n" +
-                             $"Nº da Foto: {numeroDaFoto}";
+            string content = $"Turma: '{turma}'\n" +
+                             $"Nome: '{nome}'\n" +
+                             $"Matrícula: '{matricula}'\n" +
+                             $"Nº da Foto: '{numeroDaFoto}'";
             
             
             return content;
+        }
+
+        private string RemoveEspaco(string dado) //Função criada para remover o espaço no inicio e no fim dos dados
+        {
+            if (dado.IndexOf(" ") >= 0)
+            {
+                dado = dado.TrimStart();
+                dado = dado.TrimEnd();
+                return dado;
+            }
+            else 
+            {
+                return dado;
+            }
+
         }
     }
 
